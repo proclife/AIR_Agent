@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>莫大韭菜 - 持仓时间线</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'PingFang SC', 'Helvetica Neue', Arial, sans-serif;
+            background: #f5f7fa;
+            padding: 20px;
+            line-height: 1.7;
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px 30px;
+            text-align: center;
+        }
+        
+        .header h1 {
+            font-size: 32px;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+        
+        .header p {
+            font-size: 14px;
+            opacity: 0.9;
+        }
+        
+        .content {
+            padding: 40px 30px;
+        }
+        
+        .year-section {
+            margin-bottom: 50px;
+            padding-bottom: 30px;
+            border-bottom: 2px solid #e0e0e0;
+        }
+        
+        .year-section:last-child {
+            border-bottom: none;
+        }
+        
+        .year-title {
+            font-size: 26px;
+            color: #667eea;
+            margin-bottom: 20px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .year-badge {
+            background: #667eea;
+            color: white;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 600;
+        }
+        
+        .subsection {
+            margin-bottom: 25px;
+        }
+        
+        .subsection h3 {
+            font-size: 16px;
+            color: #333;
+            margin-bottom: 12px;
+            padding-left: 12px;
+            border-left: 3px solid #667eea;
+        }
+        
+        .quote {
+            background: #f0f2ff;
+            border-left: 4px solid #667eea;
+            padding: 12px 15px;
+            margin: 12px 0;
+            border-radius: 4px;
+            font-style: italic;
+            color: #555;
+            font-size: 14px;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            border-radius: 6px;
+            overflow: hidden;
+        }
+        
+        thead {
+            background: #f0f2ff;
+        }
+        
+        th {
+            padding: 12px;
+            text-align: left;
+            font-weight: 600;
+            color: #333;
+            border-bottom: 2px solid #667eea;
+            font-size: 13px;
+        }
+        
+        td {
+            padding: 10px 12px;
+            border-bottom: 1px solid #e0e0e0;
+            font-size: 13px;
+            color: #555;
+        }
+        
+        tbody tr:hover {
+            background: #f8f9fa;
+        }
+        
+        ul {
+            margin-left: 20px;
+            margin-bottom: 12px;
+        }
+        
+        li {
+            margin-bottom: 8px;
+            color: #555;
+            font-size: 14px;
+        }
+        
+        .highlight-box {
+            background: #fffde7;
+            border-left: 4px solid #fbc02d;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+        
+        .highlight-box strong {
+            color: #f57f17;
+        }
+        
+        .key-point {
+            background: #e8f5e9;
+            border-left: 4px solid #4caf50;
+            padding: 12px 15px;
+            margin: 12px 0;
+            border-radius: 4px;
+            color: #2e7d32;
+            font-size: 14px;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin: 25px 0;
+        }
+        
+        .stat-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 6px;
+            text-align: center;
+        }
+        
+        .stat-number {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+        
+        .stat-label {
+            font-size: 12px;
+            opacity: 0.9;
+        }
+        
+        .footer {
+            background: #f5f7fa;
+            padding: 25px 30px;
+            text-align: center;
+            color: #999;
+            font-size: 12px;
+            border-top: 1px solid #e0e0e0;
+        }
+        
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 24px;
+            }
+            
+            .year-title {
+                font-size: 20px;
+            }
+            
+            .content {
+                padding: 20px;
+            }
+            
+            table {
+                font-size: 12px;
+            }
+            
+            th, td {
+                padding: 8px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>📈 莫大韭菜 持仓时间线</h1>
+            <p>2019-2026年完整持仓演变、买卖逻辑梳理</p>
+        </div>
+        
+        <div class="content">
+            <!-- 2019年 -->
+            <div class="year-section">
+                <div class="year-title">
+                    <span class="year-badge">2019年</span>
+                    起步期
+                </div>
+                
+                <div class="subsection">
+                    <h3>持仓</h3>
+                    <ul>
+                        <li><strong>物业股</strong>（某只）：莫名其妙赚了 100 万，发帖"这100万赚得莫名其妙"</li>
+                    </ul>
+                </div>
+                
+                <div class="subsection">
+                    <h3>买入逻辑</h3>
+                    <ul>
+                        <li>赌国企重组，结果买到了物业公司，反而涨了</li>
+                        <li>自称"偷鸡不成蚀把米，结果鸡飞了"</li>
+                    </ul>
+                </div>
+                
+                <div class="key-point">
+                    <strong>✅ 结果：</strong> 赚了约 100 万，开始在水木论坛出名
+                </div>
+            </div>
+            
+            <!-- 2020-2021年 -->
+            <div class="year-section">
+                <div class="year-title">
+                    <span class="year-badge">2020-2021年</span>
+                    新能源主升浪
+                </div>
+                
+                <div class="subsection">
+                    <h3>核心持仓</h3>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>股票</th>
+                                <th>代号</th>
+                                <th>仓位</th>
+                                <th>买入逻辑</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>比亚迪</strong></td>
+                                <td>企业甲/迪子</td>
+                                <td>重仓（最高50%）</td>
+                                <td>新能源龙头；巴菲特背书；王传福有信仰</td>
+                            </tr>
+                            <tr>
+                                <td><strong>融捷股份</strong></td>
+                                <td>融结</td>
+                                <td>重仓</td>
+                                <td>锂矿困境反转；盘子小；老板千亿富豪</td>
+                            </tr>
+                            <tr>
+                                <td><strong>川能动力</strong></td>
+                                <td>川能</td>
+                                <td>中仓</td>
+                                <td>国企绿电；长期逻辑</td>
+                            </tr>
+                            <tr>
+                                <td><strong>华钰矿业</strong></td>
+                                <td>华子/逆子</td>
+                                <td>轻仓</td>
+                                <td>锑矿+黄金；困境反转</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+                <div class="subsection">
+                    <h3>买入逻辑（核心）</h3>
+                    <div class="quote">「新能源车销量飞速增长，锂矿供给只能线性增长，供不应求是必然。」</div>
+                    <ul>
+                        <li>行业景气度：新能源车月销量从几万到几十万，指数级增长</li>
+                        <li>上游逻辑：锂矿→融捷；整车→比亚迪</li>
+                        <li>困境反转：低位买入，等待景气度爆发</li>
+                    </ul>
+                </div>
+                
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-number">81.4%</div>
+                        <div class="stat-label">2021年收益率</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">+1700万</div>
+                        <div class="stat-label">绝对收益</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 2022年 -->
+            <div class="year-section">
+                <div class="year-title">
+                    <span class="year-badge">2022年</span>
+                    减仓保命
+                </div>
+                
+                <div class="subsection">
+                    <h3>关键操作</h3>
+                    <div class="highlight-box">
+                        <strong>1月：宁德时代破五月线 → 减仓约1000万</strong>
+                        <div class="quote" style="margin-top: 10px;">「宁德破了五月线，很久都没破过，我就觉得锂电池要跌，整个大盘估计都好不了。」</div>
+                    </div>
+                    <ul>
+                        <li>减仓后买了一套房（约2700万新房，后退了定金）</li>
+                        <li>保留比亚迪（降至25%仓位）</li>
+                        <li>保留传播（中远海特等航运股）</li>
+                    </ul>
+                </div>
+                
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-number">-6%</div>
+                        <div class="stat-label">2022年收益率</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">+9个点</div>
+                        <div class="stat-label">跑赢大盘</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 2023年 -->
+            <div class="year-section">
+                <div class="year-title">
+                    <span class="year-badge">2023年</span>
+                    主打赔半，AI初探
+                </div>
+                
+                <div class="subsection">
+                    <h3>关键操作</h3>
+                    <div class="quote">「ChatGPT出来了，算力需求指数级增长，光模块是必须的，这是确定性最高的上游。」</div>
+                    <ul>
+                        <li>看王小长装服务器视频，发现风冷噪音大如飞机起飞 → 液冷是趋势</li>
+                        <li>买光模块（剑桥科技等）：底部盘整放量突破买入</li>
+                        <li>清仓大航海：航运周期可能过了，趋势破了就走</li>
+                        <li>新增明月镜片（五子）：眼镜消费升级逻辑，后清仓</li>
+                    </ul>
+                </div>
+                
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-number">+1000万</div>
+                        <div class="stat-label">2023年收益</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">3700万</div>
+                        <div class="stat-label">4年总收益</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 2024年 -->
+            <div class="year-section">
+                <div class="year-title">
+                    <span class="year-badge">2024年</span>
+                    AI液冷主升，商业航天布局
+                </div>
+                
+                <div class="subsection">
+                    <h3>关键操作</h3>
+                    <div class="quote">「GPU服务器散热是刚需，风冷噪音大、效率低，液冷是必然趋势。曙光数创是国内液冷龙头，位置低，逻辑硬。」</div>
+                    <ul>
+                        <li><strong>AI液冷建仓：</strong> 底部盘整放量突破买入，2024年全年最大赢家</li>
+                        <li><strong>商业航天布局：</strong> 「商业航天是下一个新能源，国家支持，景气度起来了」</li>
+                        <li>2024年亏损最多：商业航天（布局早，还没到主升）</li>
+                    </ul>
+                </div>
+                
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-number">+60%</div>
+                        <div class="stat-label">2024年收益率</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 2025年 -->
+            <div class="year-section">
+                <div class="year-title">
+                    <span class="year-badge">2025年</span>
+                    商业航天主升，锂矿翻身
+                </div>
+                
+                <div class="subsection">
+                    <h3>关键操作</h3>
+                    <div class="quote">「2024年亏损最多的，2025年赚最多的。等了一年，终于到了。」</div>
+                    <ul>
+                        <li><strong>商业航天主升：</strong> 2024年的亏损变成2025年的最大赢家</li>
+                        <li><strong>锂矿翻身：</strong> 「折服多年的锂矿，终于迎来主升，录得1000%以上收益」</li>
+                        <li><strong>储能新建仓：</strong> 「新能源发电侧需要储能，智光电气是储能龙头」</li>
+                    </ul>
+                </div>
+                
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-number">+2370万</div>
+                        <div class="stat-label">2025年收益</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">历史最大</div>
+                        <div class="stat-label">单年收益</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 2026年初 -->
+            <div class="year-section">
+                <div class="year-title">
+                    <span class="year-badge">2026年初</span>
+                    当前持仓
+                </div>
+                
+                <div class="subsection">
+                    <h3>持仓配置</h3>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>板块</th>
+                                <th>仓位</th>
+                                <th>股票</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>锂矿</strong></td>
+                                <td>16.4%</td>
+                                <td>西藏矿业</td>
+                            </tr>
+                            <tr>
+                                <td><strong>商业航天</strong></td>
+                                <td>15.8%</td>
+                                <td>航天动力、钢研高纳、上大股份</td>
+                            </tr>
+                            <tr>
+                                <td><strong>比亚迪</strong></td>
+                                <td>15.5%</td>
+                                <td>企业甲（信仰仓）</td>
+                            </tr>
+                            <tr>
+                                <td><strong>储能</strong></td>
+                                <td>14.0%</td>
+                                <td>智光电气</td>
+                            </tr>
+                            <tr>
+                                <td><strong>AI医疗</strong></td>
+                                <td>12.6%</td>
+                                <td>华大智造</td>
+                            </tr>
+                            <tr>
+                                <td><strong>AI液冷</strong></td>
+                                <td>9.7%</td>
+                                <td>曙光数创</td>
+                            </tr>
+                            <tr>
+                                <td><strong>锑矿</strong></td>
+                                <td>6.7%</td>
+                                <td>华钰矿业</td>
+                            </tr>
+                            <tr>
+                                <td><strong>磷+固态</strong></td>
+                                <td>6.4%</td>
+                                <td>司尔特、海目星</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+                <div class="key-point">
+                    <strong>✨ 特点：</strong> 8个板块均衡配置，景气度驱动，无单一过度集中
+                </div>
+            </div>
+            
+            <!-- 买卖决策规则 -->
+            <div class="year-section" style="border-bottom: none;">
+                <div class="year-title">
+                    <span class="year-badge">核心</span>
+                    买卖决策规则
+                </div>
+                
+                <div class="subsection">
+                    <h3>买入条件（同时满足）</h3>
+                    <ul>
+                        <li>行业景气度上行（业绩飞速增长或即将爆发）</li>
+                        <li>位置足够低（历史低位，不追高）</li>
+                        <li>基本面没有致命问题（不会破产）</li>
+                        <li>有想象力（能讲出未来翻倍的故事）</li>
+                    </ul>
+                </div>
+                
+                <div class="subsection">
+                    <h3>卖出条件（任一触发）</h3>
+                    <ul>
+                        <li>基本面恶化（逻辑破坏）</li>
+                        <li>高位破五周线（趋势战法止损）</li>
+                        <li>需要用钱（买房等）</li>
+                        <li>套了两年看不到希望（极端情况）</li>
+                    </ul>
+                </div>
+                
+                <div class="subsection">
+                    <h3>不卖的情况</h3>
+                    <ul>
+                        <li>走势难看但基本面没变 → 不卖</li>
+                        <li>大盘暴跌但个股逻辑没变 → 不卖</li>
+                        <li>别人都在骂 → 不卖（反而可能是底部）</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p>📊 莫大韭菜 - 持仓时间线</p>
+            <p>整理时间：2026-03-24 | 基于 208 份转写文稿 + B站动态 + 雪球内容</p>
+        </div>
+    </div>
+</body>
+</html>

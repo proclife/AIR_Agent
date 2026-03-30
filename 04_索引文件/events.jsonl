@@ -1,0 +1,13 @@
+{"date": "2020-01-30", "event": "新冠疫情爆发", "type": "macro", "impact": "市场暴跌后反弹"}
+{"date": "2020-03-09", "event": "美股熔断", "type": "macro", "impact": "全球市场暴跌"}
+{"date": "2021-02-01", "event": "锂矿行情启动", "type": "sector", "impact": "新能源板块大涨"}
+{"date": "2021-09-01", "event": "限电限产", "type": "macro", "impact": "周期股暴涨"}
+{"date": "2022-01-01", "event": "美联储加息周期开始", "type": "macro", "impact": "全球流动性收紧"}
+{"date": "2022-02-24", "event": "俄乌战争爆发", "type": "geo", "impact": "能源价格飙升"}
+{"date": "2022-11-30", "event": "ChatGPT发布", "type": "tech", "impact": "AI行情启动"}
+{"date": "2023-03-01", "event": "AI算力行情", "type": "sector", "impact": "剑桥科技等AI股暴涨"}
+{"date": "2024-02-01", "event": "Sora发布", "type": "tech", "impact": "AI视频概念热炒"}
+{"date": "2024-09-24", "event": "央行政策转向", "type": "macro", "impact": "A股大涨"}
+{"date": "2024-11-06", "event": "特朗普当选", "type": "geo", "impact": "关税预期升温"}
+{"date": "2025-01-01", "event": "商业航天主升", "type": "sector", "impact": "航天板块大涨"}
+{"date": "2025-04-02", "event": "加税牛启动", "type": "macro", "impact": "内循环逻辑"}

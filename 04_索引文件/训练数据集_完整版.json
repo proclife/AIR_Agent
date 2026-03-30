@@ -1,0 +1,249 @@
+{
+  "metadata": {
+    "version": "1.0",
+    "created": "2026-03-26",
+    "total_samples": 28,
+    "source": "莫大韭菜视频转写分析"
+  },
+  "cot_samples": [
+    {
+      "id": 1,
+      "category": "stock_decision",
+      "decision_type": "买入决策",
+      "stock": "华钰矿业",
+      "year": "2022",
+      "reasoning_chain": "1. 观察走势 突破 → 2. 验证逻辑(ST后连续跌停) → 3. 决策(买入)",
+      "raw_reason": "ST后连续跌停，有人绝望割肉，走势突破买点，困境反转"
+    },
+    {
+      "id": 2,
+      "category": "stock_decision",
+      "decision_type": "买入决策",
+      "stock": "比亚迪",
+      "year": "2021-2025",
+      "reasoning_chain": "1. 观察走势 等待 → 2. 验证逻辑(新能源龙头) → 3. 决策(买入)",
+      "raw_reason": "新能源龙头，每次大跌都是买入机会，五日线上持有"
+    },
+    {
+      "id": 3,
+      "category": "stock_decision",
+      "decision_type": "买入决策",
+      "stock": "西藏矿业",
+      "year": "2021",
+      "reasoning_chain": "1. 观察走势 等待 → 2. 验证逻辑(锂矿景气度持续) → 3. 决策(买入)",
+      "raw_reason": "锂矿景气度持续，低位布局，耐心持有"
+    },
+    {
+      "id": 4,
+      "category": "stock_decision",
+      "decision_type": "买入决策",
+      "stock": "金风科技",
+      "year": "2022",
+      "reasoning_chain": "1. 观察走势 突破 → 2. 验证逻辑(风电板块轮动) → 3. 决策(买入)",
+      "raw_reason": "风电板块轮动，突破箱体，量价配合"
+    },
+    {
+      "id": 5,
+      "category": "stock_decision",
+      "decision_type": "买入决策",
+      "stock": "微芯生物",
+      "year": "2022",
+      "reasoning_chain": "1. 观察走势 等待 → 2. 验证逻辑(小市值成长股) → 3. 决策(买入)",
+      "raw_reason": "小市值成长股，低位建仓，耐心等待"
+    },
+    {
+      "id": 6,
+      "category": "stock_decision",
+      "decision_type": "买入决策",
+      "stock": "呷哺呷哺",
+      "year": "2022",
+      "reasoning_chain": "1. 观察走势 等待 → 2. 验证逻辑(港股抄底) → 3. 决策(买入)",
+      "raw_reason": "港股抄底，8.6港币，极度低估"
+    },
+    {
+      "id": 7,
+      "category": "stock_decision",
+      "decision_type": "买入决策",
+      "stock": "剑桥科技",
+      "year": "2023",
+      "reasoning_chain": "1. 观察走势 突破 → 2. 验证逻辑(AI算力概念) → 3. 决策(买入)",
+      "raw_reason": "AI算力概念，光模块龙头，突破后买入"
+    },
+    {
+      "id": 8,
+      "category": "stock_decision",
+      "decision_type": "买入决策",
+      "stock": "中远海特",
+      "year": "2022",
+      "reasoning_chain": "1. 观察走势 等待 → 2. 验证逻辑(困境反转) → 3. 决策(买入)",
+      "raw_reason": "困境反转，酱油逻辑，散货船景气"
+    },
+    {
+      "id": 9,
+      "category": "stock_decision",
+      "decision_type": "买入决策",
+      "stock": "航天动力",
+      "year": "2025",
+      "reasoning_chain": "1. 观察走势 等待 → 2. 验证逻辑(商业航天概念) → 3. 决策(买入)",
+      "raw_reason": "商业航天概念，低位布局"
+    },
+    {
+      "id": 10,
+      "category": "stock_decision",
+      "decision_type": "买入决策",
+      "stock": "曙光数创",
+      "year": "2024",
+      "reasoning_chain": "1. 观察走势 突破 → 2. 验证逻辑(AI液冷) → 3. 决策(买入)",
+      "raw_reason": "AI液冷，赛道新颖，突破建仓"
+    },
+    {
+      "id": 11,
+      "category": "stock_decision",
+      "decision_type": "卖出决策",
+      "stock": "中国中免",
+      "year": "2022",
+      "reasoning_chain": "1. 观察走势 等待 → 2. 验证逻辑(周期走完) → 3. 决策(卖出)",
+      "raw_reason": "周期走完，高位破线，不再看好"
+    },
+    {
+      "id": 12,
+      "category": "stock_decision",
+      "decision_type": "卖出决策",
+      "stock": "西藏矿业",
+      "year": "2022",
+      "reasoning_chain": "1. 观察走势 等待 → 2. 验证逻辑(放量滞涨) → 3. 决策(卖出)",
+      "raw_reason": "放量滞涨，出现双头，止盈离场"
+    },
+    {
+      "id": 13,
+      "category": "stock_decision",
+      "decision_type": "卖出决策",
+      "stock": "剑桥科技",
+      "year": "2024",
+      "reasoning_chain": "1. 观察走势 等待 → 2. 验证逻辑(高位震荡) → 3. 决策(卖出)",
+      "raw_reason": "高位震荡，成交量过大，锁定利润"
+    },
+    {
+      "id": 14,
+      "category": "stock_decision",
+      "decision_type": "卖出决策",
+      "stock": "天齐锂业",
+      "year": "2021",
+      "reasoning_chain": "1. 观察走势 等待 → 2. 验证逻辑(锂矿行情高潮) → 3. 决策(卖出)",
+      "raw_reason": "锂矿行情高潮，分批减仓"
+    },
+    {
+      "id": 15,
+      "category": "stock_decision",
+      "decision_type": "卖出决策",
+      "stock": "融捷股份",
+      "year": "2021",
+      "reasoning_chain": "1. 观察走势 等待 → 2. 验证逻辑(高位减仓) → 3. 决策(卖出)",
+      "raw_reason": "高位减仓，兑现利润"
+    },
+    {
+      "id": 16,
+      "category": "stock_decision",
+      "decision_type": "卖出决策",
+      "stock": "华大智造",
+      "year": "2023",
+      "reasoning_chain": "1. 观察走势 等待 → 2. 验证逻辑(高位破线) → 3. 决策(卖出)",
+      "raw_reason": "高位破线，止损出局"
+    },
+    {
+      "id": 17,
+      "category": "stock_decision",
+      "decision_type": "加仓决策",
+      "stock": "比亚迪",
+      "year": "2021-2024",
+      "reasoning_chain": "1. 观察走势 等待 → 2. 验证逻辑(走势强劲) → 3. 决策(加仓)",
+      "raw_reason": "走势强劲，五日线上格局，重仓持有"
+    },
+    {
+      "id": 18,
+      "category": "stock_decision",
+      "decision_type": "加仓决策",
+      "stock": "华钰矿业",
+      "year": "2022",
+      "reasoning_chain": "1. 观察走势 突破 → 2. 验证逻辑(逻辑验证) → 3. 决策(加仓)",
+      "raw_reason": "逻辑验证，锑矿概念确认，突破加码"
+    },
+    {
+      "id": 19,
+      "category": "stock_decision",
+      "decision_type": "加仓决策",
+      "stock": "川能动力",
+      "year": "2021",
+      "reasoning_chain": "1. 观察走势 等待 → 2. 验证逻辑(锂电景气) → 3. 决策(加仓)",
+      "raw_reason": "锂电景气，持续加仓"
+    },
+    {
+      "id": 20,
+      "category": "stock_decision",
+      "decision_type": "止损决策",
+      "stock": "某高位股",
+      "year": "随时",
+      "reasoning_chain": "1. 观察走势 等待 → 2. 验证逻辑(高位破五日线) → 3. 决策(止损)",
+      "raw_reason": "高位破五日线，必须走"
+    },
+    {
+      "id": 21,
+      "category": "stock_decision",
+      "decision_type": "止损决策",
+      "stock": "明月镜片",
+      "year": "2023",
+      "reasoning_chain": "1. 观察走势 等待 → 2. 验证逻辑(跌破平台) → 3. 决策(止损)",
+      "raw_reason": "跌破平台，认错离场"
+    },
+    {
+      "id": 22,
+      "category": "stock_decision",
+      "decision_type": "持有决策",
+      "stock": "比亚迪",
+      "year": "持续",
+      "reasoning_chain": "1. 观察走势 等待 → 2. 验证逻辑(五日线上) → 3. 决策(持有)",
+      "raw_reason": "五日线上，格局不变"
+    },
+    {
+      "id": 23,
+      "category": "stock_decision",
+      "decision_type": "持有决策",
+      "stock": "华钰矿业",
+      "year": "持续",
+      "reasoning_chain": "1. 观察走势 等待 → 2. 验证逻辑(逻辑未变) → 3. 决策(持有)",
+      "raw_reason": "逻辑未变，等待时机"
+    }
+  ],
+  "qa_samples": [
+    {
+      "id": 24,
+      "category": "qa",
+      "question": "比亚迪现在可以买吗？",
+      "answer": "比亚迪是新能源龙头，长期看好。但需要结合走势：在五日线上可以考虑布局，高位破线要注意止损。关键是'走势和想法矛盾时，尊重走势'。"
+    },
+    {
+      "id": 25,
+      "category": "qa",
+      "question": "什么时候应该止损？",
+      "answer": "高位股跌破五日线或十日线时要考虑止损。核心理念：'走势和想法矛盾时，尊重走势'。低位股可以等待，但也要设底线。"
+    },
+    {
+      "id": 26,
+      "category": "qa",
+      "question": "什么是好的抄底时机？",
+      "answer": "好的抄底时机：1. 跌到历史低位 2. 成交量极度萎缩 3. 基本面没有破产风险。心态：'输时间不输钱'。"
+    },
+    {
+      "id": 27,
+      "category": "qa",
+      "question": "如何判断卖点？",
+      "answer": "卖点判断：1. 高位放量滞涨 2. 跌破重要均线 3. 出现双头形态。原则：'山顶做梦是散户亏钱本质'，涨了10倍8倍的要格外小心。"
+    },
+    {
+      "id": 28,
+      "category": "qa",
+      "question": "如何选股？",
+      "answer": "选股原则：1. 只买便宜的好股票 2. 行业景气度向上 3. 走势已经或即将突破 4. 有政策支持优先。'尊重走势，放弃幻想'。"
+    }
+  ]
+}

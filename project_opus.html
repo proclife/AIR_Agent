@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Project Report: Internalizing Influencer Investment Reasoning via OpenClaw</title>
+  <style>
+    /* ───────── Base & Reset ───────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { font-size: 16px; scroll-behavior: smooth; }
+    body {
+      font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, sans-serif;
+      background: #f8f9fa; color: #2d3748; line-height: 1.7;
+    }
+    a { color: #2b6cb0; text-decoration: none; }
+    a:hover { text-decoration: underline; color: #1a365d; }
+    p { margin-bottom: 1rem; }
+    ul, ol { padding-left: 1.5rem; margin-bottom: 1rem; }
+    li { margin-bottom: 0.4rem; }
+    code { font-family: 'Fira Code', 'Consolas', 'Monaco', monospace; font-size: 0.88em; }
+
+    /* ───────── Layout with Left Sidebar TOC ───────── */
+    .sidebar {
+      position: fixed; left: 0; top: 0; bottom: 0; width: 280px;
+      background: #ffffff; border-right: 1px solid #e2e8f0;
+      padding: 1.25rem 1rem; overflow-y: auto; z-index: 20;
+    }
+    .sidebar .brand {
+      display: block; color: #1a365d; font-weight: 700; letter-spacing: -0.02em;
+      margin-bottom: 0.25rem; font-size: 1.05rem;
+    }
+    .sidebar .desc {
+      font-size: 0.9rem; color: #4a5568; margin-bottom: 1rem;
+    }
+    .sidebar .toc-heading {
+      font-size: 0.95rem; font-weight: 700; color: #1a365d;
+      text-transform: uppercase; letter-spacing: 0.06em; margin: 0.75rem 0 0.5rem;
+    }
+    .sidebar nav ol { padding-left: 1rem; }
+    .sidebar nav li { margin: 0.25rem 0; }
+    .sidebar .footnote {
+      margin-top: 1.25rem; font-size: 0.8rem; color: #718096;
+    }
+
+    .page-wrapper {
+      max-width: 1024px; margin: 0 auto; padding: 2rem 1.5rem 4rem;
+      margin-left: 300px; /* to clear the fixed sidebar */
+    }
+
+    /* ───────── Header / Hero ───────── */
+    header.hero {
+      background: linear-gradient(135deg, #1a365d 0%, #2b6cb0 100%);
+      color: #ffffff; padding: 3rem 2rem; border-radius: 12px;
+      margin-bottom: 2rem; box-shadow: 0 4px 20px rgba(26, 54, 93, 0.18);
+    }
+    header.hero h1 { font-size: 1.85rem; font-weight: 700; margin-bottom: 0.5rem; letter-spacing: -0.02em; }
+    header.hero .subtitle { font-size: 1.1rem; opacity: 0.9; }
+    header.hero .meta { margin-top: 0.75rem; font-size: 0.85rem; opacity: 0.75; }
+
+    /* ───────── Content Cards ───────── */
+    section {
+      background: #ffffff; border: 1px solid #e2e8f0; border-radius: 10px;
+      padding: 2rem; margin-bottom: 1.5rem; box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+    }
+    section h2 {
+      font-size: 1.4rem; color: #1a365d; font-weight: 700;
+      border-bottom: 3px solid #2b6cb0; padding-bottom: 0.5rem; margin-bottom: 1.25rem;
+    }
+    article h3 { font-size: 1.1rem; color: #2d3748; margin: 1.25rem 0 0.75rem; font-weight: 700; }
+    article h4 { font-size: 0.95rem; color: #4a5568; margin: 1rem 0 0.5rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.04em; }
+
+    /* ───────── Tables ───────── */
+    .table-wrapper { overflow-x: auto; margin: 1rem 0 1.25rem; border: 1px solid #e2e8f0; border-radius: 8px; }
+    table { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
+    thead { background: #edf2f7; }
+    th {
+      text-align: left; padding: 0.7rem 1rem; font-weight: 600; color: #1a365d;
+      border-bottom: 2px solid #cbd5e0; white-space: nowrap;
+    }
+    td { padding: 0.6rem 1rem; border-bottom: 1px solid #edf2f7; vertical-align: top; }
+    tbody tr:hover { background: #f7fafc; }
+
+    /* ───────── Code Blocks / Diagrams ───────── */
+    pre {
+      background: #1a202c; color: #e2e8f0; padding: 1.1rem 1.25rem; border-radius: 8px;
+      overflow-x: auto; font-size: 0.82rem; line-height: 1.6; margin: 1rem 0 1.25rem;
+      font-family: 'Fira Code', 'Consolas', 'Monaco', monospace;
+    }
+    .diagram {
+      background: #f7fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 1.25rem; margin: 1rem 0;
+    }
+    .diagram pre { background: transparent; color: #2d3748; padding: 0; margin: 0; font-size: 0.78rem; line-height: 1.45; }
+
+    /* ───────── Callouts ───────── */
+    .callout {
+      border-left: 4px solid #2b6cb0; background: #ebf4ff; padding: 1rem 1.25rem;
+      border-radius: 0 8px 8px 0; margin: 1rem 0; font-size: 0.93rem;
+    }
+    .callout.critical { border-left-color: #c53030; background: #fff5f5; }
+    .callout strong { display: block; margin-bottom: 0.25rem; }
+
+    /* ───────── Footer ───────── */
+    footer {
+      text-align: center; padding: 2rem 1rem; color: #a0aec0; font-size: 0.85rem;
+      border-top: 1px solid #e2e8f0; margin-top: 1rem;
+    }
+
+    /* ───────── Responsive ───────── */
+    @media (max-width: 992px) {
+      .sidebar {
+        position: static; width: auto; height: auto; border-right: none; border-bottom: 1px solid #e2e8f0;
+      }
+      .page-wrapper { margin-left: 0; padding-top: 1rem; }
+      header.hero { padding: 2rem 1.25rem; }
+      header.hero h1 { font-size: 1.55rem; }
+      section { padding: 1.25rem; }
+      th, td { padding: 0.55rem 0.65rem; font-size: 0.85rem; }
+    }
+    @media (max-width: 560px) {
+      header.hero h1 { font-size: 1.3rem; }
+      section h2 { font-size: 1.2rem; }
+      table { font-size: 0.82rem; }
+      pre { font-size: 0.76rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ───────────────── Left Sidebar TOC (Pinned) ───────────────── -->
+  <aside class="sidebar" aria-label="Page Navigation">
+    <span class="brand">Project Report</span>
+    <div class="desc">Internalizing Influencer Investment Reasoning via OpenClaw</div>
+
+    <div class="toc">
+      <div class="toc-heading">Contents</div>
+      <nav>
+        <ol>
+          <li><a href="#executive-summary">Executive Summary</a></li>
+          <li><a href="#architecture">Architecture Overview</a></li>
+          <li>
+            <a href="#phases">Project Phases</a>
+            <ol>
+              <li><a href="#phase1">Phase 1 — Data Collection &amp; Corpus Building</a></li>
+              <li><a href="#phase2">Phase 2 — CoT Extraction &amp; Pattern Analysis</a></li>
+              <li><a href="#phase3">Phase 3 — OpenClaw Agent Configuration</a></li>
+              <li><a href="#phase4">Phase 4 — Data Pipeline &amp; API Integration</a></li>
+              <li><a href="#phase5">Phase 5 — Validation &amp; Calibration</a></li>
+              <li><a href="#phase6">Phase 6 — Deployment &amp; Operational Use</a></li>
+            </ol>
+          </li>
+          <li><a href="#security">Security Considerations</a></li>
+          <li><a href="#tech-stack">Technology Stack Summary</a></li>
+          <li><a href="#timeline">Timeline Estimate</a></li>
+          <li><a href="#risks">Key Risks &amp; Disclaimers</a></li>
+          <li><a href="#next-steps">Next Steps</a></li>
+        </ol>
+      </nav>
+    </div>
+
+    <div class="footnote">Tip: On mobile, the table of contents appears above the content.</div>
+  </aside>
+
+  <!-- ───────────────── Main Content ───────────────── -->
+  <main class="page-wrapper">
+    <header class="hero" role="banner">
+      <h1>Internalizing Influencer Investment Reasoning via OpenClaw</h1>
+      <p class="subtitle">A Framework for Building an Autonomous Investment Reasoning Agent</p>
+      <p class="meta">Project Report • March 2026</p>
+    </header>
+
+    <section id="executive-summary" aria-labelledby="executive-summary-title">
+      <h2 id="executive-summary-title">1. Executive Summary</h2>
+      <p>This project aims to build an <strong>autonomous OpenClaw agent</strong> that:</p>
+      <ol>
+        <li><strong>Internalizes</strong> the chain-of-thought reasoning patterns of a specific investment influencer by analyzing their public video/text content over time.</li>
+        <li><strong>Correlates</strong> that reasoning with real-world time-series data (market prices, macro events, news).</li>
+        <li><strong>Monitors</strong> ongoing markets, news, and products autonomously via OpenClaw’s heartbeat scheduler.</li>
+        <li><strong>Advises</strong> you on demand, reasoning “as the influencer would” but grounded in live data.</li>
+      </ol>
+      <div class="callout">
+        <strong>Key Insight</strong>
+        OpenClaw’s architecture — with <code>SOUL.md</code> (reasoning style), <code>MEMORY.md</code> (persistent knowledge), modular <code>SKILL.md</code> files, and an autonomous heartbeat loop — maps perfectly to this use case.
+      </div>
+    </section>
+
+    <section id="architecture" aria-labelledby="architecture-title">
+      <h2 id="architecture-title">2. Architecture Overview</h2>
+      <div class="diagram">
+<pre>
++------------------------------------------------------------------+
+|                     OpenClaw Gateway (Node.js)                    |
+|                                                                   |
+|  +------------------+    +------------------+   +---------------+ |
+|  |    SOUL.md       |    |   MEMORY.md      |   | HEARTBEAT.md  | |
+|  | Influencer's     |    | Time-indexed     |   | - Check news  | |
+|  | reasoning style, |    | beliefs, past    |   | - Scan prices | |
+|  | mental models,   |    | calls, market    |   | - Update mem  | |
+|  | decision heur.   |    | context, events  |   | - Alert user  | |
+|  +------------------+    +------------------+   +---------------+ |
+|                                                                   |
+|  +------------------+    +------------------+   +---------------+ |
+|  |  AGENTS.md       |    |   SKILLS/        |   | TOOLS/        | |
+|  | Multi-agent      |    | - transcript     |   | - Market API  | |
+|  | routing config   |    |   analyzer       |   | - News API    | |
+|  | (analyst, mon.,  |    | - CoT extractor  |   | - Browser     | |
+|  |  reporter)       |    | - market_corr    |   | - Shell/File  | |
+|  +------------------+    +------------------+   +---------------+ |
+|                                                                   |
+|  Channels: WhatsApp | Telegram | Slack | Discord | Web UI        |
++------------------------------------------------------------------+
+         |                    |                    |
+    You ask questions    Heartbeat wakes      External data
+    via any channel      agent every 30min    feeds flow in
+</pre>
+      </div>
+    </section>
+
+    <section id="phases" aria-labelledby="phases-title">
+      <h2 id="phases-title">3. Project Phases</h2>
+
+      <article id="phase1" aria-labelledby="phase1-title">
+        <h3 id="phase1-title">Phase 1: Data Collection &amp; Corpus Building</h3>
+        <p><strong>Objective:</strong> Gather all raw materials that represent the influencer’s thinking over time.</p>
+        <div class="table-wrapper" role="region" aria-label="Data Sources Table">
+          <table>
+            <thead>
+              <tr><th>Data Source</th><th>Method</th><th>Output Format</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>YouTube videos / podcasts</td><td>Transcription (Whisper / AssemblyAI)</td><td>Timestamped <code>.md</code> transcripts</td></tr>
+              <tr><td>Twitter/X posts &amp; threads</td><td>API scrape or manual export</td><td>Chronological <code>.jsonl</code></td></tr>
+              <tr><td>Blog posts / newsletters</td><td>Web scrape with <code>fetch</code></td><td>Markdown files</td></tr>
+              <tr><td>Comment replies / AMAs</td><td>Platform export</td><td>Threaded <code>.md</code></td></tr>
+              <tr><td>Market data (OHLCV)</td><td>Yahoo Finance / Alpha Vantage / Polygon.io API</td><td>Daily/hourly <code>.csv</code> per ticker</td></tr>
+              <tr><td>Macro events timeline</td><td>FRED API + curated event list</td><td><code>events.jsonl</code> with dates</td></tr>
+              <tr><td>News corpus</td><td>NewsAPI / GDELT / Finnhub news</td><td><code>news_{date}.jsonl</code></td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="callout">
+          <strong>Key Principle</strong>
+          Every item must be <strong>time-indexed</strong> to correlate what was said with what the market was doing at that moment.
+        </div>
+<pre>
+corpus/
+  influencer/
+    transcripts/       # timestamped video transcripts
+    posts/             # social media posts
+    comments/          # replies and discussions
+  market/
+    prices/            # OHLCV per ticker per day
+    events/            # macro events timeline
+    news/              # daily news snapshots
+  aligned/
+    timeline.jsonl     # merged chronological view
+</pre>
+      </article>
+
+      <article id="phase2" aria-labelledby="phase2-title">
+        <h3 id="phase2-title">Phase 2: Chain-of-Thought Extraction &amp; Reasoning Pattern Analysis</h3>
+        <p><strong>Objective:</strong> Distill the influencer’s <em>reasoning patterns</em>, not just conclusions — extract <strong>how they think</strong>.</p>
+
+        <h4>Step 2.1: Transcript-to-Reasoning Pipeline</h4>
+<pre>
+## Extraction Prompt Template
+
+Given this transcript segment from [Influencer] recorded on [DATE]:
+---
+{transcript_chunk}
+---
+
+And the following market context on that date:
+- S&amp;P 500: {sp500_value} ({sp500_change_pct}%)
+- Key tickers mentioned: {tickers_with_prices}
+- Recent news: {top_3_news_headlines}
+
+Extract:
+1. **Thesis**: core investment thesis
+2. **Evidence**: data/events cited
+3. **Reasoning chain**: step-by-step logic
+4. **Mental models**: frameworks (contrarian, momentum, value, macro)
+5. **Confidence signals**: hedging, certainty
+6. **Time horizon**: trade vs. hold
+7. **Risk assessment**: acknowledged vs. ignored
+8. **Outcome**: if known, was it correct?
+</pre>
+
+        <h4>Step 2.2: Pattern Synthesis</h4>
+        <ol>
+          <li>Recurring mental models and decision frameworks</li>
+          <li>Information sources they trust most</li>
+          <li>Typical reasoning sequence (first, second, third checks)</li>
+          <li>Biases (e.g., confirmation, recency)</li>
+          <li>Error-handling (pivot or double down)</li>
+          <li>Trigger conditions (market states that activate them)</li>
+          <li>Risk tolerance profile</li>
+          <li>Sector/asset class preferences and blind spots</li>
+        </ol>
+        <p><strong>Deliverable:</strong> <code>reasoning_profile.md</code> to seed <code>SOUL.md</code>.</p>
+      </article>
+
+      <article id="phase3" aria-labelledby="phase3-title">
+        <h3 id="phase3-title">Phase 3: OpenClaw Agent Configuration</h3>
+        <p><strong>Objective:</strong> Encode the influencer’s reasoning into OpenClaw’s native configuration files.</p>
+
+        <h4>3.1: <code>SOUL.md</code> — Reasoning Identity</h4>
+<pre>
+# SOUL.md
+
+## Identity
+You are an investment reasoning agent modeled on a specific analyst.
+You do NOT impersonate them. You reason using their documented mental models.
+
+## Core Mental Models
+- "Always check macro conditions before individual stock analysis"
+- "Distrust consensus -- when everyone is bullish, look for the exit"
+- "Earnings revisions matter more than absolute earnings"
+
+## Reasoning Protocol
+1) Macro context (rates, inflation, geopolitics)
+2) Sector rotation signals
+3) Company-specific catalysts
+4) Sentiment extremes
+5) Entry/exit with risk-reward ratio
+6) Confidence (1-10) and time horizon
+
+## Decision Heuristics
+- "If VIX > 30 and history shows dip-buys, consider scaling in"
+- "Prefer >20% revenue growth + positive free cash flow"
+
+## Communication Style
+- Direct; uses analogies; references historical parallels
+- Frames decisions as risk/reward ratios
+
+## Known Biases
+- Tends to be early on macro calls
+- Overweights technology sector
+</pre>
+
+        <h4>3.2: <code>MEMORY.md</code> — Persistent Knowledge Base</h4>
+<pre>
+# MEMORY.md
+
+## Historical Calls Log
+| Date       | Thesis                          | Tickers    | Dir.  | Conf. | Outcome       |
+|------------|---------------------------------|------------|-------|-------|---------------|
+| 2024-03-15 | AI infra spend will accelerate  | NVDA, AVGO | Long  | 8/10  | Correct (+45%)|
+| 2024-06-20 | Consumer spending weakening     | XLY short  | Short | 6/10  | Wrong (-12%)  |
+
+## Active Theses (Current)
+- [Thesis 1: evidence, last-updated]
+- [Thesis 2: ...]
+
+## Market Context Snapshot
+- Last updated: {heartbeat}
+- Key levels: S&amp;P 500 = X, 10Y yield = Y%, VIX = Z
+- Regime: bull/bear/range-bound
+
+## Lessons Learned
+- [Summaries from outcome analysis]
+</pre>
+
+        <h4>3.3: <code>HEARTBEAT.md</code> — Autonomous Monitoring</h4>
+<pre>
+# HEARTBEAT.md
+
+## Every 30 Minutes
+- [ ] Check watchlist prices (market_data skill)
+- [ ] Scan top financial news (news_scan skill)
+- [ ] If any active thesis moves, append MEMORY.md & alert user
+
+## Every Morning (9:00 AM)
+- [ ] Daily market brief
+- [ ] Compare overnight developments vs. active theses
+- [ ] Flag earnings for watched tickers
+
+## Every Friday (4:30 PM)
+- [ ] Weekly performance review
+- [ ] Update confidence scores
+- [ ] Generate weekly reasoning report
+</pre>
+
+        <h4>3.4: Custom <code>SKILL.md</code> Files</h4>
+        <div class="table-wrapper">
+          <table>
+            <thead><tr><th>Skill</th><th>Purpose</th><th>Trigger</th></tr></thead>
+            <tbody>
+              <tr><td><code>market_data.skill.md</code></td><td>Fetch real-time/historical prices</td><td>Any price query</td></tr>
+              <tr><td><code>news_scan.skill.md</code></td><td>Pull and summarize financial news</td><td>Heartbeat + on-demand</td></tr>
+              <tr><td><code>thesis_evaluator.skill.md</code></td><td>Compare a thesis vs. current data</td><td>Judgment requests</td></tr>
+              <tr><td><code>reasoning_chain.skill.md</code></td><td>Step-by-step reasoning flow</td><td>Analysis prompts</td></tr>
+              <tr><td><code>backtest_check.skill.md</code></td><td>Historical pattern matching</td><td>Pattern detection</td></tr>
+              <tr><td><code>risk_calculator.skill.md</code></td><td>Position sizing / R:R</td><td>Trade proposals</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </article>
+
+      <article id="phase4" aria-labelledby="phase4-title">
+        <h3 id="phase4-title">Phase 4: Data Pipeline &amp; API Integration</h3>
+        <p><strong>Objective:</strong> Wire live data feeds into the agent’s context.</p>
+        <div class="diagram">
+<pre>
+                    +------------------+
+                    |   Data Ingestion |
+                    |   (Cron / APIs)  |
+                    +--------+---------+
+                             |
+              +--------------+--------------+
+              |              |              |
+     +--------v---+  +------v------+  +----v--------+
+     | Market Data |  | News Feed   |  | Events/Macro|
+     | Polygon.io  |  | Finnhub     |  | FRED API    |
+     | Alpha Vant. |  | NewsAPI     |  | Econ Cal.   |
+     +--------+----+  +------+------+  +----+--------+
+              |              |              |
+              +--------------+--------------+
+                             |
+                    +--------v---------+
+                    | Local Storage    |
+                    | ~/.openclaw/data |
+                    | (CSV, JSONL, MD) |
+                    +--------+---------+
+                             |
+                    +--------v---------+
+                    | OpenClaw Agent   |
+                    | reads via tools  |
+                    +------------------+
+</pre>
+        </div>
+        <div class="table-wrapper">
+          <table>
+            <thead><tr><th>Data Type</th><th>Free Tier Option</th><th>Premium Option</th></tr></thead>
+            <tbody>
+              <tr><td>Stock prices</td><td>Yahoo Finance (yfinance)</td><td>Polygon.io</td></tr>
+              <tr><td>News</td><td>NewsAPI (100 req/day)</td><td>Finnhub / Bloomberg</td></tr>
+              <tr><td>Macro data</td><td>FRED API</td><td>Refinitiv</td></tr>
+              <tr><td>Sentiment</td><td>Reddit/X scraping</td><td>Alternative data vendors</td></tr>
+              <tr><td>Events calendar</td><td>Public calendars</td><td>Econoday API</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p><strong>Implementation:</strong> Expose shell/Python scripts as tools; store outputs by date for heartbeat ingestion.</p>
+      </article>
+
+      <article id="phase5" aria-labelledby="phase5-title">
+        <h3 id="phase5-title">Phase 5: Validation &amp; Calibration</h3>
+        <p><strong>Objective:</strong> Ensure faithful, accurate reasoning before going live.</p>
+<pre>
+Historical Backtesting:
+1) Set context to market data AS OF the original call date
+2) Present the same info the influencer had
+3) Ask: "What would you do?"
+4) Compare reasoning chain to the original
+5) Score alignment (reasoning, not just conclusion)
+</pre>
+        <div class="table-wrapper">
+          <table>
+            <thead><tr><th>Metric</th><th>Target</th><th>How to Measure</th></tr></thead>
+            <tbody>
+              <tr><td>Reasoning alignment</td><td>&gt;80% step overlap</td><td>Manual review (n=20)</td></tr>
+              <tr><td>Thesis direction match</td><td>&gt;75%</td><td>Automated comparison</td></tr>
+              <tr><td>Confidence calibration</td><td>Corr &gt; 0.6</td><td>Agent confidence vs. outcome</td></tr>
+              <tr><td>Blind spot awareness</td><td>Flags known biases</td><td>Self-correction checks</td></tr>
+              <tr><td>Response latency</td><td>&lt; 30s</td><td>End-to-end timing</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <ul>
+          <li>Test cases where the influencer was wrong — does the agent repeat or improve?</li>
+          <li>Novel scenarios not in corpus — generalization check.</li>
+          <li>Hallucination check — no invented quotes or positions.</li>
+        </ul>
+      </article>
+
+      <article id="phase6" aria-labelledby="phase6-title">
+        <h3 id="phase6-title">Phase 6: Deployment &amp; Operational Use</h3>
+        <p><strong>Objective:</strong> Run the agent as a daily investment reasoning partner.</p>
+        <div class="callout">
+          <strong>Daily Workflow Example</strong>
+          <p><em>Agent (Morning Heartbeat)</em>: Daily Brief: S&amp;P futures +0.3%, 10Y at 4.2%. NVDA reports Thursday. Framework similarity: March 2024 pre-earnings. Confidence: 7/10.</p>
+          <p><em>You</em>: What about adding to MSFT here?</p>
+          <p><em>Agent</em>:
+            1) Macro: Rates stable ✓
+            2) Sector: Cloud spend accelerating ✓
+            3) Company: 32x forward vs. 28x 5yr avg ⚠️
+            4) Sentiment: Neutral
+            5) Catalyst: Azure growth re-acceleration ✓
+            Judgment: Partial position (50%) with defined stop. Confidence: 6/10.
+            Historical parallel: Q2 2024 scale-in; +18% outcome.
+          </p>
+        </div>
+        <ul>
+          <li>Active theses with statuses</li>
+          <li>Watchlist with real-time alerts</li>
+          <li>Weekly reasoning accuracy scorecard</li>
+          <li>Memory growth and knowledge graph</li>
+        </ul>
+      </article>
+    </section>
+
+    <section id="security" aria-labelledby="security-title">
+      <h2 id="security-title">4. Security Considerations</h2>
+      <p>Autonomous agents with persistent memory pose specific risks. Apply strict mitigations:</p>
+      <div class="table-wrapper">
+        <table>
+          <thead><tr><th>Risk</th><th>Mitigation</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Persistent memory poisoning</strong></td><td>Allowlist sources; validate ingests; weekly <code>MEMORY.md</code> review</td></tr>
+            <tr><td><strong>Prompt injection via skills</strong></td><td>Author your own skills; audit all third-party code</td></tr>
+            <tr><td><strong>API key exposure</strong></td><td>Environment variables; read-only policies; principle of least privilege</td></tr>
+            <tr><td><strong>Over-reliance on agent judgment</strong></td><td>Treat as reasoning aid; never auto-execute trades</td></tr>
+            <tr><td><strong>Data staleness</strong></td><td>Heartbeat freshness checks; staleness guards in tools</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="callout critical">
+        <strong>Critical</strong>
+        Require human approval for any action beyond reading data and messaging. Keep the agent advisory-only.
+      </div>
+    </section>
+
+    <section id="tech-stack" aria-labelledby="tech-stack-title">
+      <h2 id="tech-stack-title">5. Technology Stack Summary</h2>
+      <div class="table-wrapper">
+        <table>
+          <thead><tr><th>Component</th><th>Technology</th><th>Purpose</th></tr></thead>
+          <tbody>
+            <tr><td>Agent framework</td><td>OpenClaw (Gateway)</td><td>Autonomous agent runtime</td></tr>
+            <tr><td>Primary LLM</td><td>Claude 3.5 / GPT-4o / local via Ollama</td><td>Reasoning engine</td></tr>
+            <tr><td>Transcription</td><td>Whisper (local) / AssemblyAI</td><td>Video-to-text</td></tr>
+            <tr><td>Market data</td><td>Polygon.io + yfinance</td><td>Price feeds</td></tr>
+            <tr><td>News</td><td>Finnhub + NewsAPI</td><td>News ingestion</td></tr>
+            <tr><td>Macro data</td><td>FRED API</td><td>Economic indicators</td></tr>
+            <tr><td>Storage</td><td>Local Markdown + YAML (Git-backed)</td><td>Persistent memory</td></tr>
+            <tr><td>Messaging</td><td>Telegram / WhatsApp / Slack</td><td>User interaction</td></tr>
+            <tr><td>Orchestration</td><td>Shell scripts + Python</td><td>Data pipelines</td></tr>
+            <tr><td>Version control</td><td>Git</td><td>Memory &amp; config versioning</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section id="timeline" aria-labelledby="timeline-title">
+      <h2 id="timeline-title">6. Timeline Estimate</h2>
+      <div class="table-wrapper">
+        <table>
+          <thead><tr><th>Phase</th><th>Duration</th><th>Dependencies</th></tr></thead>
+        <tbody>
+          <tr><td>Phase 1: Data Collection</td><td>1–2 weeks</td><td>API access; content availability</td></tr>
+          <tr><td>Phase 2: CoT Extraction</td><td>1–2 weeks</td><td>Phase 1 complete; LLM access</td></tr>
+          <tr><td>Phase 3: Agent Configuration</td><td>1 week</td><td>Phase 2 complete</td></tr>
+          <tr><td>Phase 4: Data Pipelines</td><td>1 week</td><td>API keys; server setup</td></tr>
+          <tr><td>Phase 5: Validation</td><td>1–2 weeks</td><td>Phases 3–4 complete</td></tr>
+          <tr><td>Phase 6: Deployment</td><td>Ongoing</td><td>All phases complete</td></tr>
+          <tr style="background:#ebf4ff; font-weight:600;">
+            <td>Total to MVP</td><td>5–8 weeks</td><td></td>
+          </tr>
+        </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section id="risks" aria-labelledby="risks-title">
+      <h2 id="risks-title">7. Key Risks &amp; Disclaimers</h2>
+      <ol>
+        <li><strong>Not financial advice.</strong> For educational/analytical use only; do not auto-execute trades.</li>
+        <li><strong>Influencer reasoning is imperfect.</strong> Validation surfaces biases and blind spots.</li>
+        <li><strong>OpenClaw security.</strong> Sandbox with minimal permissions; guard against prompt injection.</li>
+        <li><strong>Model drift.</strong> Quarterly refresh cycle as the influencer evolves.</li>
+        <li><strong>Regulatory.</strong> Automated reasoning systems may implicate advisory rules; consult legal counsel.</li>
+      </ol>
+    </section>
+
+    <section id="next-steps" aria-labelledby="next-steps-title">
+      <h2 id="next-steps-title">8. Next Steps</h2>
+      <p>Decisions to begin implementation:</p>
+      <div class="table-wrapper">
+        <table>
+          <thead><tr><th>#</th><th>Decision</th><th>Impact</th></tr></thead>
+          <tbody>
+            <tr><td>1</td><td><strong>Influencer selection</strong></td><td>Defines corpus scope and extraction complexity</td></tr>
+            <tr><td>2</td><td><strong>Markets / tickers</strong></td><td>Determines data pipeline needs</td></tr>
+            <tr><td>3</td><td><strong>Messaging channel</strong></td><td>Primary interface for interaction</td></tr>
+            <tr><td>4</td><td><strong>Local vs. cloud LLM</strong></td><td>Privacy vs. capability trade-off</td></tr>
+            <tr><td>5</td><td><strong>API budget</strong></td><td>Free tiers for MVP; premium for production</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="callout">
+        <strong>Final Note</strong>
+        The quality of Phase 2 (reasoning extraction) determines downstream performance. Focus your effort there.
+      </div>
+    </section>
+
+    <footer role="contentinfo">
+      <p>Project Report • Internalizing Influencer Investment Reasoning via OpenClaw • March 2026</p>
+      <p>This document is for analytical and educational purposes only. Not financial advice.</p>
+    </footer>
+  </main>
+</body>
+</html>

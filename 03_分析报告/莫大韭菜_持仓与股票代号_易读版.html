@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>莫大韭菜 - 持仓与股票代号</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'PingFang SC', 'Helvetica Neue', Arial, sans-serif;
+            background: #f8f9fa;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: #fff;
+            padding: 30px 20px;
+            border-bottom: 3px solid #667eea;
+            text-align: center;
+        }
+        
+        .header h1 {
+            font-size: 28px;
+            color: #333;
+            margin-bottom: 5px;
+        }
+        
+        .header p {
+            color: #666;
+            font-size: 14px;
+        }
+        
+        .content {
+            padding: 30px 20px;
+        }
+        
+        .section {
+            margin-bottom: 40px;
+        }
+        
+        .section-title {
+            font-size: 20px;
+            color: #333;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #667eea;
+            font-weight: 600;
+        }
+        
+        /* 股票代号卡片 */
+        .code-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        
+        .code-card {
+            background: #f8f9fa;
+            border: 1px solid #e0e0e0;
+            border-radius: 6px;
+            padding: 15px;
+            transition: all 0.3s ease;
+        }
+        
+        .code-card:hover {
+            background: #f0f2ff;
+            border-color: #667eea;
+            box-shadow: 0 2px 8px rgba(102, 126, 234, 0.1);
+        }
+        
+        .code-name {
+            font-size: 16px;
+            font-weight: 600;
+            color: #667eea;
+            margin-bottom: 8px;
+        }
+        
+        .code-stock {
+            font-size: 14px;
+            color: #333;
+            margin-bottom: 6px;
+        }
+        
+        .code-industry {
+            font-size: 12px;
+            color: #999;
+            background: #fff;
+            padding: 4px 8px;
+            border-radius: 3px;
+            display: inline-block;
+        }
+        
+        /* 持仓表格 */
+        .position-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        
+        .position-table thead {
+            background: #f0f2ff;
+        }
+        
+        .position-table th {
+            padding: 12px;
+            text-align: left;
+            font-weight: 600;
+            color: #333;
+            border-bottom: 2px solid #667eea;
+            font-size: 14px;
+        }
+        
+        .position-table td {
+            padding: 12px;
+            border-bottom: 1px solid #e0e0e0;
+            font-size: 14px;
+        }
+        
+        .position-table tbody tr:hover {
+            background: #f8f9fa;
+        }
+        
+        .position-percent {
+            font-weight: 600;
+            color: #667eea;
+            font-size: 15px;
+        }
+        
+        .position-stock {
+            color: #666;
+        }
+        
+        .total-row {
+            background: #f0f2ff;
+            font-weight: 600;
+        }
+        
+        .total-row td {
+            border-top: 2px solid #667eea;
+            border-bottom: 2px solid #667eea;
+        }
+        
+        /* 演变历程 */
+        .timeline {
+            position: relative;
+            padding-left: 30px;
+        }
+        
+        .timeline-item {
+            margin-bottom: 20px;
+            padding-bottom: 20px;
+            border-left: 2px solid #e0e0e0;
+            padding-left: 20px;
+            position: relative;
+        }
+        
+        .timeline-item:last-child {
+            border-left: none;
+        }
+        
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -8px;
+            top: 0;
+            width: 14px;
+            height: 14px;
+            background: #667eea;
+            border-radius: 50%;
+            border: 3px solid white;
+            box-shadow: 0 0 0 2px #667eea;
+        }
+        
+        .timeline-title {
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 8px;
+            font-size: 15px;
+        }
+        
+        .timeline-desc {
+            color: #666;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+        
+        /* 统计卡片 */
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+        
+        .stat-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 6px;
+            text-align: center;
+        }
+        
+        .stat-number {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+        
+        .stat-label {
+            font-size: 13px;
+            opacity: 0.9;
+        }
+        
+        /* 提示框 */
+        .tip-box {
+            background: #fffde7;
+            border-left: 4px solid #fbc02d;
+            padding: 15px;
+            border-radius: 4px;
+            margin: 20px 0;
+            font-size: 14px;
+            color: #333;
+        }
+        
+        .tip-box strong {
+            color: #f57f17;
+        }
+        
+        .footer {
+            background: #f8f9fa;
+            padding: 20px;
+            text-align: center;
+            color: #999;
+            font-size: 12px;
+            border-top: 1px solid #e0e0e0;
+        }
+        
+        /* 响应式 */
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 22px;
+            }
+            
+            .section-title {
+                font-size: 18px;
+            }
+            
+            .code-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .position-table {
+                font-size: 12px;
+            }
+            
+            .position-table th,
+            .position-table td {
+                padding: 8px;
+            }
+            
+            .stats {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🚀 莫大韭菜 持仓与股票代号</h1>
+            <p>完整对照表 | 2026年初持仓配置</p>
+        </div>
+        
+        <div class="content">
+            <!-- 统计 -->
+            <div class="stats">
+                <div class="stat-card">
+                    <div class="stat-number">14</div>
+                    <div class="stat-label">股票代号</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">8</div>
+                    <div class="stat-label">持仓板块</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">97.1%</div>
+                    <div class="stat-label">总仓位</div>
+                </div>
+            </div>
+            
+            <!-- 股票代号 -->
+            <div class="section">
+                <div class="section-title">📋 股票代号对照表</div>
+                
+                <div class="code-grid">
+                    <div class="code-card">
+                        <div class="code-name">企业甲 / 迪子</div>
+                        <div class="code-stock">比亚迪</div>
+                        <div class="code-industry">新能源车</div>
+                    </div>
+                    
+                    <div class="code-card">
+                        <div class="code-name">老情人</div>
+                        <div class="code-stock">西藏矿业</div>
+                        <div class="code-industry">锂矿</div>
+                    </div>
+                    
+                    <div class="code-card">
+                        <div class="code-name">冷子 / AI液冷</div>
+                        <div class="code-stock">曙光数创</div>
+                        <div class="code-industry">AI液冷散热</div>
+                    </div>
+                    
+                    <div class="code-card">
+                        <div class="code-name">航天 / 六子</div>
+                        <div class="code-stock">航天动力</div>
+                        <div class="code-industry">商业航天</div>
+                    </div>
+                    
+                    <div class="code-card">
+                        <div class="code-name">大华</div>
+                        <div class="code-stock">华大智造</div>
+                        <div class="code-industry">AI医疗</div>
+                    </div>
+                    
+                    <div class="code-card">
+                        <div class="code-name">储能</div>
+                        <div class="code-stock">智光电气</div>
+                        <div class="code-industry">储能</div>
+                    </div>
+                    
+                    <div class="code-card">
+                        <div class="code-name">华子 / 逆子</div>
+                        <div class="code-stock">华钰矿业</div>
+                        <div class="code-industry">锑矿+黄金</div>
+                    </div>
+                    
+                    <div class="code-card">
+                        <div class="code-name">磷+固态</div>
+                        <div class="code-stock">司尔特；海目星</div>
+                        <div class="code-industry">磷矿+固态电池</div>
+                    </div>
+                    
+                    <div class="code-card">
+                        <div class="code-name">高温合金</div>
+                        <div class="code-stock">钢研高纳；上大股份</div>
+                        <div class="code-industry">航天材料</div>
+                    </div>
+                    
+                    <div class="code-card">
+                        <div class="code-name">酱油</div>
+                        <div class="code-stock">中远海特</div>
+                        <div class="code-industry">船运 (已清仓)</div>
+                    </div>
+                    
+                    <div class="code-card">
+                        <div class="code-name">大学</div>
+                        <div class="code-stock">剑桥科技</div>
+                        <div class="code-industry">光模块</div>
+                    </div>
+                    
+                    <div class="code-card">
+                        <div class="code-name">眼镜 / 五子</div>
+                        <div class="code-stock">明月镜片</div>
+                        <div class="code-industry">眼镜 (已清仓)</div>
+                    </div>
+                    
+                    <div class="code-card">
+                        <div class="code-name">川能</div>
+                        <div class="code-stock">川能动力</div>
+                        <div class="code-industry">新能源</div>
+                    </div>
+                    
+                    <div class="code-card">
+                        <div class="code-name">yyds</div>
+                        <div class="code-stock">华为</div>
+                        <div class="code-industry">科技</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 2026年初持仓 -->
+            <div class="section">
+                <div class="section-title">💼 2026年初持仓配置</div>
+                
+                <table class="position-table">
+                    <thead>
+                        <tr>
+                            <th>板块</th>
+                            <th>占比</th>
+                            <th>对应股票</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>锂矿</strong></td>
+                            <td class="position-percent">16.4%</td>
+                            <td class="position-stock">西藏矿业</td>
+                        </tr>
+                        <tr>
+                            <td><strong>商业航天</strong></td>
+                            <td class="position-percent">15.8%</td>
+                            <td class="position-stock">航天动力、钢研高纳、上大股份</td>
+                        </tr>
+                        <tr>
+                            <td><strong>比亚迪</strong></td>
+                            <td class="position-percent">15.5%</td>
+                            <td class="position-stock">企业甲（信仰仓）</td>
+                        </tr>
+                        <tr>
+                            <td><strong>储能</strong></td>
+                            <td class="position-percent">14.0%</td>
+                            <td class="position-stock">智光电气</td>
+                        </tr>
+                        <tr>
+                            <td><strong>AI医疗</strong></td>
+                            <td class="position-percent">12.6%</td>
+                            <td class="position-stock">华大智造</td>
+                        </tr>
+                        <tr>
+                            <td><strong>AI液冷</strong></td>
+                            <td class="position-percent">9.7%</td>
+                            <td class="position-stock">曙光数创</td>
+                        </tr>
+                        <tr>
+                            <td><strong>锑矿</strong></td>
+                            <td class="position-percent">6.7%</td>
+                            <td class="position-stock">华钰矿业</td>
+                        </tr>
+                        <tr>
+                            <td><strong>磷+固态</strong></td>
+                            <td class="position-percent">6.4%</td>
+                            <td class="position-stock">司尔特、海目星</td>
+                        </tr>
+                        <tr class="total-row">
+                            <td><strong>合计</strong></td>
+                            <td class="position-percent">97.1%</td>
+                            <td>-</td>
+                        </tr>
+                    </tbody>
+                </table>
+                
+                <div class="tip-box">
+                    <strong>💡 提示：</strong> 8个板块均衡配置，无单一过度集中。所有持仓都处于行业景气度上升期。
+                </div>
+            </div>
+            
+            <!-- 持仓演变 -->
+            <div class="section">
+                <div class="section-title">📈 持仓演变历程</div>
+                
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-title">初期四大主线</div>
+                        <div class="timeline-desc">
+                            新能源（比亚迪等）、AI（光模块、液冷）、小金属（锂矿、锑矿）、大航海（中远海特等）
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-title">✅ 清仓大航海</div>
+                        <div class="timeline-desc">
+                            航运周期见顶，趋势破五周线，果断止损
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-title">➕ 增加五子（明月镜片）</div>
+                        <div class="timeline-desc">
+                            眼镜消费升级逻辑，后因逻辑不够强而清仓
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-title">➕ 增加六子（航天动力）</div>
+                        <div class="timeline-desc">
+                            商业航天景气度起来，2025年成为最大赢家
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-title">🎯 当前配置</div>
+                        <div class="timeline-desc">
+                            8个板块均衡持仓，景气度驱动，动态调整
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 关键特点 -->
+            <div class="section">
+                <div class="section-title">✨ 持仓特点</div>
+                
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px;">
+                    <div style="background: #f0f2ff; padding: 15px; border-radius: 6px;">
+                        <div style="font-weight: 600; color: #667eea; margin-bottom: 8px;">🎯 景气度驱动</div>
+                        <div style="font-size: 13px; color: #666;">所有持仓都处于行业景气度上升期</div>
+                    </div>
+                    
+                    <div style="background: #f0f2ff; padding: 15px; border-radius: 6px;">
+                        <div style="font-weight: 600; color: #667eea; margin-bottom: 8px;">⚖️ 均衡配置</div>
+                        <div style="font-size: 13px; color: #666;">8个板块分散风险，无过度集中</div>
+                    </div>
+                    
+                    <div style="background: #f0f2ff; padding: 15px; border-radius: 6px;">
+                        <div style="font-weight: 600; color: #667eea; margin-bottom: 8px;">🔄 动态调整</div>
+                        <div style="font-size: 13px; color: #666;">根据景气度变化灵活轮动</div>
+                    </div>
+                    
+                    <div style="background: #f0f2ff; padding: 15px; border-radius: 6px;">
+                        <div style="font-weight: 600; color: #667eea; margin-bottom: 8px;">💪 信仰仓</div>
+                        <div style="font-size: 13px; color: #666;">比亚迪持有10年不动，长期看好</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p>📊 莫大韭菜 - 持仓与股票代号对照表</p>
+            <p>更新时间：2026-03-24 | 基于B站内容深度分析整理 | 仅供学习参考</p>
+        </div>
+    </div>
+</body>
+</html>
