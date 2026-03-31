@@ -6,20 +6,13 @@
   <title>雪球·罗洄头回复评论 2026-03-30</title>
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
-    
     body {
       font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Microsoft YaHei', sans-serif;
       background: #f0f2f5;
       color: #1c1e21;
       padding: 20px;
     }
-    
-    .container {
-      max-width: 700px;
-      margin: 0 auto;
-    }
-    
-    /* 头部卡片 */
+    .container { max-width: 700px; margin: 0 auto; }
     .header {
       background: linear-gradient(135deg, #245b4e 0%, #1a3c34 100%);
       color: white;
@@ -28,196 +21,55 @@
       margin-bottom: 20px;
       box-shadow: 0 4px 20px rgba(36, 91, 78, 0.3);
     }
-    
-    .header-top {
-      display: flex;
-      align-items: center;
-      gap: 16px;
-      margin-bottom: 16px;
-    }
-    
+    .header-top { display: flex; align-items: center; gap: 16px; margin-bottom: 16px; }
     .avatar {
-      width: 56px;
-      height: 56px;
+      width: 56px; height: 56px;
       background: rgba(255,255,255,0.15);
       border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      display: flex; align-items: center; justify-content: center;
       font-size: 24px;
     }
-    
-    .header-info h1 {
-      font-size: 22px;
-      font-weight: 600;
-      margin-bottom: 4px;
-    }
-    
-    .header-info .uid {
-      font-size: 13px;
-      opacity: 0.7;
-    }
-    
-    .stats {
-      display: flex;
-      gap: 24px;
-      margin-top: 20px;
-    }
-    
+    .header-info h1 { font-size: 22px; font-weight: 600; margin-bottom: 4px; }
+    .header-info .uid { font-size: 13px; opacity: 0.7; }
+    .stats { display: flex; gap: 24px; margin-top: 20px; }
     .stat-item {
       background: rgba(255,255,255,0.1);
-      border-radius: 12px;
-      padding: 12px 20px;
-      flex: 1;
-      text-align: center;
+      border-radius: 12px; padding: 12px 20px;
+      flex: 1; text-align: center;
     }
-    
-    .stat-value {
-      font-size: 22px;
-      font-weight: 700;
-      color: #4ade80;
-    }
-    
-    .stat-label {
-      font-size: 12px;
-      opacity: 0.8;
-      margin-top: 2px;
-    }
-    
-    /* 评论区 */
+    .stat-value { font-size: 22px; font-weight: 700; color: #4ade80; }
+    .stat-label { font-size: 12px; opacity: 0.8; margin-top: 2px; }
     .comment-card {
       background: white;
-      border-radius: 12px;
-      padding: 20px;
-      margin-bottom: 14px;
+      border-radius: 12px; padding: 20px; margin-bottom: 14px;
       box-shadow: 0 2px 8px rgba(0,0,0,0.06);
       border: 1px solid #e8e8e8;
-      transition: transform 0.2s, box-shadow 0.2s;
     }
-    
-    .comment-card:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 4px 16px rgba(0,0,0,0.1);
-    }
-    
-    .comment-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 14px;
-    }
-    
-    .comment-num {
-      background: #245b4e;
-      color: white;
-      font-size: 12px;
-      font-weight: 600;
-      padding: 4px 10px;
-      border-radius: 20px;
-    }
-    
-    .comment-time {
-      color: #8e8e93;
-      font-size: 13px;
-    }
-    
+    .comment-time { color: #8e8e93; font-size: 13px; margin-bottom: 14px; }
     .reply-block {
       background: #f0f7f5;
       border-left: 4px solid #245b4e;
       border-radius: 0 10px 10px 0;
-      padding: 14px 16px;
-      margin-bottom: 14px;
+      padding: 14px 16px; margin-bottom: 14px;
     }
-    
-    .reply-block .label {
-      font-size: 11px;
-      color: #245b4e;
-      font-weight: 600;
-      margin-bottom: 6px;
-      display: flex;
-      align-items: center;
-      gap: 4px;
-    }
-    
-    .reply-block .content {
-      color: #1c1e21;
-      font-size: 15px;
-      line-height: 1.6;
-    }
-    
+    .reply-block .label { font-size: 11px; color: #245b4e; font-weight: 600; margin-bottom: 6px; }
+    .reply-block .content { color: #1c1e21; font-size: 15px; line-height: 1.6; }
     .original-block {
       background: #f8f8f8;
       border-left: 4px solid #999;
       border-radius: 0 10px 10px 0;
-      padding: 14px 16px;
-      margin-bottom: 8px;
+      padding: 14px 16px; margin-bottom: 8px;
     }
-    
-    .original-block .label {
-      font-size: 11px;
-      color: #666;
-      font-weight: 600;
-      margin-bottom: 6px;
-    }
-    
-    .original-block .user {
-      color: #e67e22;
-      font-weight: 600;
-      margin-bottom: 4px;
-    }
-    
-    .original-block .content {
-      color: #555;
-      font-size: 14px;
-      line-height: 1.5;
-    }
-    
-    .original-time {
-      font-size: 12px;
-      color: #999;
-      margin-top: 6px;
-    }
-    
-    .likes {
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      color: #ff6b6b;
-      font-size: 14px;
-      font-weight: 500;
-      margin-top: 12px;
-      padding-top: 12px;
-      border-top: 1px solid #eee;
-    }
-    
-    .likes-icon {
-      font-size: 16px;
-    }
-    
-    /* 底部 */
-    .footer {
-      text-align: center;
-      color: #999;
-      font-size: 12px;
-      padding: 20px;
-      line-height: 1.8;
-    }
-    
-    .tag {
-      display: inline-block;
-      background: #e8f5f2;
-      color: #245b4e;
-      font-size: 11px;
-      padding: 3px 8px;
-      border-radius: 4px;
-      margin-top: 10px;
-    }
+    .original-block .label { font-size: 11px; color: #666; font-weight: 600; margin-bottom: 6px; }
+    .original-block .user { color: #e67e22; font-weight: 600; margin-bottom: 4px; }
+    .original-block .content { color: #555; font-size: 14px; line-height: 1.5; }
+    .original-time { font-size: 12px; color: #999; margin-top: 6px; }
+    .footer { text-align: center; color: #999; font-size: 12px; padding: 20px; line-height: 1.8; }
+    .tag { display: inline-block; background: #e8f5f2; color: #245b4e; font-size: 11px; padding: 3px 8px; border-radius: 4px; margin-top: 10px; }
   </style>
 </head>
 <body>
   <div class="container">
-    
-    <!-- 头部 -->
     <div class="header">
       <div class="header-top">
         <div class="avatar">📊</div>
@@ -236,19 +88,14 @@
           <div class="stat-label">最新回复</div>
         </div>
         <div class="stat-item">
-          <div class="stat-value">976</div>
-          <div class="stat-label">总点赞</div>
+          <div class="stat-value">03-20</div>
+          <div class="stat-label">最早回复</div>
         </div>
       </div>
     </div>
-    
-    <!-- 评论列表 -->
-    
+
     <div class="comment-card">
-      <div class="comment-header">
-        <span class="comment-num">#1</span>
-        <span class="comment-time">🕐 03-27 14:13</span>
-      </div>
+      <div class="comment-time">🕐 03-27 14:13</div>
       <div class="reply-block">
         <div class="label">🔵 罗洄头回复</div>
         <div class="content">商业航天还有</div>
@@ -258,17 +105,10 @@
         <div class="content">回复@罗洄头: 商业航天没了吗</div>
         <div class="original-time">🕐 03-27 14:01</div>
       </div>
-      <div class="likes">
-        <span class="likes-icon">❤️</span>
-        <span>21 赞</span>
-      </div>
     </div>
-    
+
     <div class="comment-card">
-      <div class="comment-header">
-        <span class="comment-num">#2</span>
-        <span class="comment-time">🕐 03-27 13:59</span>
-      </div>
+      <div class="comment-time">🕐 03-27 13:59</div>
       <div class="reply-block">
         <div class="label">🔵 罗洄头回复</div>
         <div class="content">可控核聚变，脑机接口，商业航天，AI游戏，量子计算（ing），在a股我不炒，我投一级了</div>
@@ -278,17 +118,10 @@
         <div class="content">可控核聚变？</div>
         <div class="original-time">🕐 03-27 13:57</div>
       </div>
-      <div class="likes">
-        <span class="likes-icon">❤️</span>
-        <span>29 赞</span>
-      </div>
     </div>
-    
+
     <div class="comment-card">
-      <div class="comment-header">
-        <span class="comment-num">#3</span>
-        <span class="comment-time">🕐 03-27 13:55</span>
-      </div>
+      <div class="comment-time">🕐 03-27 13:55</div>
       <div class="reply-block">
         <div class="label">🔵 罗洄头回复</div>
         <div class="content">还有啥方向？想不到了</div>
@@ -298,17 +131,10 @@
         <div class="content">考虑新方向不，头儿</div>
         <div class="original-time">🕐 03-27 13:54</div>
       </div>
-      <div class="likes">
-        <span class="likes-icon">❤️</span>
-        <span>123 赞</span>
-      </div>
     </div>
-    
+
     <div class="comment-card">
-      <div class="comment-header">
-        <span class="comment-num">#4</span>
-        <span class="comment-time">🕐 03-27 13:53</span>
-      </div>
+      <div class="comment-time">🕐 03-27 13:53</div>
       <div class="reply-block">
         <div class="label">🔵 罗洄头回复</div>
         <div class="content">原本是预计ai再爆发电会不够用，我喜欢打一个2-3年提前量，布局新能源、储能、锂矿。现在好嘛，被老特搞得现在就不够了</div>
@@ -318,17 +144,10 @@
         <div class="content">黑色石油危机，让白色石油价值重估了。客观来讲，这次压中纯属运气，本来只是想卡一下ai的能源脖子的</div>
         <div class="original-time">🕐 03-27 13:45</div>
       </div>
-      <div class="likes">
-        <span class="likes-icon">❤️</span>
-        <span>203 赞</span>
-      </div>
     </div>
-    
+
     <div class="comment-card">
-      <div class="comment-header">
-        <span class="comment-num">#5</span>
-        <span class="comment-time">🕐 03-27 10:36</span>
-      </div>
+      <div class="comment-time">🕐 03-27 10:36</div>
       <div class="reply-block">
         <div class="label">🔵 罗洄头回复</div>
         <div class="content">让他们跑，不要干涉他人因果。</div>
@@ -338,17 +157,10 @@
         <div class="content">老大太牛了，感谢在我意志最薄弱和动摇的时候，打强心针。我也照猫画虎给同事们打，但收效甚微，一反弹就要跑，拦都拦不住</div>
         <div class="original-time">🕐 03-27 10:32</div>
       </div>
-      <div class="likes">
-        <span class="likes-icon">❤️</span>
-        <span>173 赞</span>
-      </div>
     </div>
-    
+
     <div class="comment-card">
-      <div class="comment-header">
-        <span class="comment-num">#6</span>
-        <span class="comment-time">🕐 03-25 15:27</span>
-      </div>
+      <div class="comment-time">🕐 03-25 15:27</div>
       <div class="reply-block">
         <div class="label">🔵 罗洄头回复</div>
         <div class="content">我可没说过</div>
@@ -358,17 +170,10 @@
         <div class="content">回复@江城司马: 真的假的，记得老大去年说过，大霄水平很高的</div>
         <div class="original-time">🕐 03-25 14:32</div>
       </div>
-      <div class="likes">
-        <span class="likes-icon">❤️</span>
-        <span>23 赞</span>
-      </div>
     </div>
-    
+
     <div class="comment-card">
-      <div class="comment-header">
-        <span class="comment-num">#7</span>
-        <span class="comment-time">🕐 03-25 00:01</span>
-      </div>
+      <div class="comment-time">🕐 03-25 00:01</div>
       <div class="reply-block">
         <div class="label">🔵 罗洄头回复</div>
         <div class="content">有，有什么说法。我午觉不睡，晚饭后就得睡。代价就是现在巨清醒</div>
@@ -378,17 +183,10 @@
         <div class="content">头大有睡午觉的习惯吗？</div>
         <div class="original-time">🕐 03-24 23:48</div>
       </div>
-      <div class="likes">
-        <span class="likes-icon">❤️</span>
-        <span>133 赞</span>
-      </div>
     </div>
-    
+
     <div class="comment-card">
-      <div class="comment-header">
-        <span class="comment-num">#8</span>
-        <span class="comment-time">🕐 03-20 16:00</span>
-      </div>
+      <div class="comment-time">🕐 03-20 16:00</div>
       <div class="reply-block">
         <div class="label">🔵 罗洄头回复</div>
         <div class="content">放弃幻想，准备斗争，国产买起来。</div>
@@ -398,17 +196,10 @@
         <div class="content">联合创始人因走私AI服务器被逮，超微电脑盘后一度暴跌14%</div>
         <div class="original-time">🕐 03-20 15:11</div>
       </div>
-      <div class="likes">
-        <span class="likes-icon">❤️</span>
-        <span>183 赞</span>
-      </div>
     </div>
-    
+
     <div class="comment-card">
-      <div class="comment-header">
-        <span class="comment-num">#9</span>
-        <span class="comment-time">🕐 03-20 15:23</span>
-      </div>
+      <div class="comment-time">🕐 03-20 15:23</div>
       <div class="reply-block">
         <div class="label">🔵 罗洄头回复</div>
         <div class="content">我不动啊，你没根又不是跟我学的。我可不管没根怎么办。</div>
@@ -418,19 +209,13 @@
         <div class="content">后面怎么办啊哥，要调仓吗？</div>
         <div class="original-time">🕐 03-20 15:23</div>
       </div>
-      <div class="likes">
-        <span class="likes-icon">❤️</span>
-        <span>116 赞</span>
-      </div>
     </div>
-    
-    <!-- 底部 -->
+
     <div class="footer">
       <div>🤖 OpenClaw 雪球回复监控系统</div>
-      <div>📅 抓取时间: 2026-03-30 19:44 · 每日 10:30 自动更新</div>
+      <div>📅 抓取时间: 2026-03-30 · 每日 10:30 自动更新</div>
       <div class="tag">🔔 数据来源: xueqiu.com</div>
     </div>
-    
   </div>
 </body>
 </html>
