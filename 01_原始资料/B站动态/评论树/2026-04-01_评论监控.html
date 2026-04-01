@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>B站评论监控 - 2026-04-01</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; background: #f5f5f5; padding: 20px; line-height: 1.6; }
+        .container { max-width: 720px; margin: 0 auto; }
+        .header { background: linear-gradient(135deg, #00a1d6, #00c8d6); color: white; padding: 24px; border-radius: 12px; margin-bottom: 16px; }
+        .header h1 { font-size: 20px; margin-bottom: 6px; }
+        .header p { opacity: 0.85; font-size: 13px; }
+        .stats { display: flex; gap: 12px; margin-top: 12px; flex-wrap: wrap; }
+        .stat { background: rgba(255,255,255,0.25); padding: 8px 16px; border-radius: 8px; }
+        .stat-label { font-size: 11px; opacity: 0.9; }
+        .stat-value { font-size: 20px; font-weight: bold; }
+        
+        .comment { background: white; border-radius: 10px; padding: 14px 16px; margin-bottom: 10px; box-shadow: 0 1px 4px rgba(0,0,0,0.06); }
+        .comment-header { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; }
+        .name { font-weight: 600; font-size: 14px; color: #18191c; }
+        .time { color: #9499a0; font-size: 12px; margin-left: auto; }
+        .content { color: #18191c; font-size: 14px; white-space: pre-wrap; }
+        
+        .footer { text-align: center; padding: 16px; color: #9499a0; font-size: 12px; }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="header">
+        <h1>📺 B站评论监控报告</h1>
+        <p>莫大韭菜 · 近期更新</p>
+        <div class="stats">
+            <div class="stat"><div class="stat-label">评论数</div><div class="stat-value">30</div></div>
+        </div>
+    </div>
+    <div class="comment">
+        <div class="comment-header">
+            <span class="name">莫大韭菜</span>
+            <span class="time">2026-02-26 12:11</span>
+        </div>
+        <div class="content">回归b站，沉淀一下。</div>
+    </div>
+    <div class="comment">
+        <div class="comment-header">
+            <span class="name">莫大韭菜</span>
+            <span class="time">2026-02-26 12:15</span>
+        </div>
+        <div class="content">做完手里的，再怎么轮动，还是没想清楚。</div>
+    </div>
+    <div class="comment">
+        <div class="comment-header">
+            <span class="name">顺势而为哈啊</span>
+            <span class="time">2分钟前</span>
+        </div>
+        <div class="content">莫大的票很少有6子那种一口气噌噌长 大多数还是得波段操作 容姐xz逆子都没走 结果过山车了</div>
+    </div>
+    <div class="comment">
+        <div class="comment-header">
+            <span class="name">他们都叫我小强</span>
+            <span class="time">11分钟前</span>
+        </div>
+        <div class="content">垃圾时间赏花吧还是</div>
+    </div>
+    <div class="comment">
+        <div class="comment-header">
+            <span class="name">未知名的铁子</span>
+            <span class="time">17分钟前</span>
+        </div>
+        <div class="content">Ou</div>
+    </div>
+    <div class="comment">
+        <div class="comment-header">
+            <span class="name">wicb</span>
+            <span class="time">37分钟前</span>
+        </div>
+        <div class="content">我看看我是不是绿</div>
+    </div>
+    <div class="comment">
+        <div class="comment-header">
+            <span class="name">吴嘉伦</span>
+            <span class="time">1小时前</span>
+        </div>
+        <div class="content">我又回来了 兄弟们</div>
+    </div>
+    <div class="comment">
+        <div class="comment-header">
+            <span class="name">吉祥村話事人</span>
+            <span class="time">30分钟前</span>
+        </div>
+        <div class="content">你小子</div>
+    </div>
+    <div class="comment">
+        <div class="comment-header">
+            <span class="name">神说世界要有光</span>
+            <span class="time">16分钟前</span>
+        </div>
+        <div class="content">赚了</div>
+    </div>
+    <div class="comment">
+        <div class="comment-header">
+            <span class="name">勤奋pc</span>
+            <span class="time">1小时前</span>
+        </div>
+        <div class="content">今天半仓药给的利润 部分用来给锂矿交费了，只不过还是很看好储能方向，肯定坚定持有，其实也只是利润回吐，感觉这种电风扇行情还是要么空仓要么别乱动</div>
+    </div>
+    <div class="comment">
+        <div class="comment-header">
+            <span class="name">Firth555</span>
+            <span class="time">1小时前</span>
+        </div>
+        <div class="content">全靠油运今天才红，锂矿这么磨磨挺好的，散户太多不洗些出去未来没有高度。</div>
+    </div>
+    <div class="comment">
+        <div class="comment-header">
+            <span class="name">tfciw</span>
+            <span class="time">1小时前</span>
+        </div>
+        <div class="content">这么磨好在哪里，这都能连上两个W了，拉升本身就会把很多人洗出去，靠平台磨才多少量</div>
+    </div>
+    <div class="comment">
+        <div class="comment-header">
+            <span class="name">海有风999</span>
+            <span class="time">1小时前</span>
+        </div>
+        <div class="content">收盘原油开始拉，真会玩。</div>
+    </div>
+    <div class="comment">
+        <div class="comment-header">
+            <span class="name">我是辅助别A我</span>
+            <span class="time">1小时前</span>
+        </div>
+        <div class="content">那可太好了，石油危机利好锂、新能源</div>
+    </div>
+    <div class="comment">
+        <div class="comment-header">
+            <span class="name">seven的糯</span>
+            <span class="time">1小时前</span>
+        </div>
+        <div class="content">名字咋变绿色了</div>
+    </div>
+    <div class="comment">
+        <div class="comment-header">
+            <span class="name">莫大不败</span>
+            <span class="time">1小时前</span>
+        </div>
+        <div class="content">听说买这票会被割，我来试试</div>
+    </div>
+    <div class="comment">
+        <div class="comment-header">
+            <span class="name">韭菜小同学</span>
+            <span class="time">1小时前</span>
+        </div>
+        <div class="content">锂矿切六子和逆子，五日线破位了，减仓一部分，如果后续企稳，逆子六子破位，就再切回来，下一次操作就是周五，看看五周线情况</div>
+    </div>
+    <div class="comment">
+        <div class="comment-header">
+            <span class="name">GomiBli</span>
+            <span class="time">2小时前</span>
+        </div>
+        <div class="content">周一 钠电池
+周二 津巴布韦
+周三 梘下窝
+周四 累库
+周五 新能源车销量下滑
+我在破船被折磨了四年小作文都没锂矿一周的多</div>
+    </div>
+    <div class="comment">
+        <div class="comment-header">
+            <span class="name">至尊哥打野</span>
+            <span class="time">2小时前</span>
+        </div>
+        <div class="content">触碰到某些人的利益了，所以一直有脏东西在搞事情</div>
+    </div>
+    <div class="comment">
+        <div class="comment-header">
+            <span class="name">梦中の雪丶</span>
+            <span class="time">1小时前</span>
+        </div>
+        <div class="content">踏马的太真实了，我都破防了</div>
+    </div>
+    <div class="comment">
+        <div class="comment-header">
+            <span class="name">迷雾探险家笑</span>
+            <span class="time">2小时前</span>
+        </div>
+        <div class="content">创新药也是跌成一泡稀，也就这几天才来了几根 锂起码没跌吧？rj和yx涨了这么多回调一下不行吗？ 为啥意见这么大呢？</div>
+    </div>
+    <div class="comment">
+        <div class="comment-header">
+            <span class="name">狗子没有wifi</span>
+            <span class="time">2小时前</span>
+        </div>
+        <div class="content">5日线破了，走一半</div>
+    </div>
+    <div class="comment">
+        <div class="comment-header">
+            <span class="name">Windrunner517</span>
+            <span class="time">2小时前</span>
+        </div>
+        <div class="content">回去重学！</div>
+    </div>
+    <div class="comment">
+        <div class="comment-header">
+            <span class="name">装大韭菜</span>
+            <span class="time">3小时前</span>
+        </div>
+        <div class="content">还得是cpo啊</div>
+    </div>
+    <div class="comment">
+        <div class="comment-header">
+            <span class="name">GomiBli</span>
+            <span class="time">3小时前</span>
+        </div>
+        <div class="content">道心破碎</div>
+    </div>
+    <div class="comment">
+        <div class="comment-header">
+            <span class="name">睿智的王老菊</span>
+            <span class="time">2小时前</span>
+        </div>
+        <div class="content">雇几个忍者把缺德高层干掉吧吕桑</div>
+    </div>
+    <div class="comment">
+        <div class="comment-header">
+            <span class="name">梦想总被别人实现</span>
+            <span class="time">3小时前</span>
+        </div>
+        <div class="content">兄弟们，今天3红6绿正常嘛</div>
+    </div>
+    <div class="comment">
+        <div class="comment-header">
+            <span class="name">伊池夏莉</span>
+            <span class="time">3小时前</span>
+        </div>
+        <div class="content">笑死我了，锂矿大v底下全是投降宁德的</div>
+    </div>
+    <div class="comment">
+        <div class="comment-header">
+            <span class="name">咔咖333</span>
+            <span class="time">3小时前</span>
+        </div>
+        <div class="content">这不是给之前觉得错过没上车，仓位给小了的人机会么？该高兴啊…局势如果真好转，都会涨吧</div>
+    </div>
+    <div class="comment">
+        <div class="comment-header">
+            <span class="name">今天要努力-o</span>
+            <span class="time">3小时前</span>
+        </div>
+        <div class="content">这波怪啊b 哪有绿那么早的</div>
+    </div>
+    <div class="footer">数据来源: Bilibili | 抓取时间: 2026-04-01 21:23:29</div>
+</div>
+</body>
+</html>
