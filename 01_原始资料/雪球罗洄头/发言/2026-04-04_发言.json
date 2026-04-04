@@ -1,0 +1,95 @@
+{
+  "date": "2026-04-04",
+  "posts": [
+    {
+      "id": 0,
+      "time": "昨天 15:16",
+      "content": "二次回踩很正常啊 反正我又没操作 没操作就不会多亏 不多亏对长线就等于没亏 没亏在这行情就等于赚了",
+      "likes": 84,
+      "comments": 3,
+      "reposts": 0,
+      "is_pinned": false
+    },
+    {
+      "id": 1,
+      "time": "昨天 15:13",
+      "content": "切，二次回踩罢了",
+      "likes": 187,
+      "comments": 101,
+      "reposts": 26,
+      "is_pinned": false
+    },
+    {
+      "id": 2,
+      "time": "04-02 13:20",
+      "content": "这一波可以算是小型股灾了吧 很多人估计亏惨了",
+      "likes": 315,
+      "comments": 243,
+      "reposts": 67,
+      "is_pinned": false
+    },
+    {
+      "id": 3,
+      "time": "04-01 14:57",
+      "content": "张雪对我的触动很大 特别励志 也特别像我本科一个湖南同学 他也是一根筋 年轻时候很多人是看笑话心态 我当面说过他 你以后要么特别牛逼要么特别傻逼 没有中间态 结果也是干成了 当然没选对赛道 所以是个小结果 但相比他原来的处境来讲 已经相当好",
+      "likes": 441,
+      "comments": 112,
+      "reposts": 20,
+      "is_pinned": false
+    },
+    {
+      "id": 4,
+      "time": "04-01 13:36",
+      "content": "反正我的持仓 不太怕打起来 最近一周已经没看两边小丑表演了 看腻歪了 爱咋滴咋滴吧",
+      "likes": 201,
+      "comments": 69,
+      "reposts": 20,
+      "is_pinned": false
+    },
+    {
+      "id": 5,
+      "time": "04-01 13:19",
+      "content": "为什么我的持仓总是逆大盘？奇了怪了",
+      "likes": 211,
+      "comments": 119,
+      "reposts": 8,
+      "is_pinned": false
+    },
+    {
+      "id": 6,
+      "time": "04-01 14:40",
+      "content": "回复@三块大石头y: 就是高点下来，我也忘了高点是几月了",
+      "likes": 94,
+      "comments": 5,
+      "reposts": 0,
+      "is_pinned": false
+    },
+    {
+      "id": 7,
+      "time": "04-01 13:42",
+      "content": "回复@他们都叫我小强: 关键也没啥行情啊，账户都赖得打开。最近玩ai上瘾了，claude给我封了，又开始玩codex，价格模型加起来花了1000多块钱了。现在玩ai跟玩我的世界似的，心想事成",
+      "likes": 113,
+      "comments": 39,
+      "reposts": 0,
+      "is_pinned": false
+    },
+    {
+      "id": 8,
+      "time": "04-01 13:26",
+      "content": "回复@丰善: 我抄巴菲特、李嘉诚作业，没赚过钱。",
+      "likes": 92,
+      "comments": 8,
+      "reposts": 0,
+      "is_pinned": false
+    },
+    {
+      "id": 9,
+      "time": "04-02 13:23",
+      "content": "回复@快乐的大壮牛牛: 加加加，加什么加！没钱了",
+      "likes": 146,
+      "comments": 101,
+      "reposts": 0,
+      "is_pinned": false
+    }
+  ]
+}
