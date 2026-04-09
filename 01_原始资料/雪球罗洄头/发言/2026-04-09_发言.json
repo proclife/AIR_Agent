@@ -1,0 +1,43 @@
+{
+  "date": "2026-04-09",
+  "user": "罗洄头",
+  "uid": "2632831661",
+  "profile": {
+    "followers": 46908,
+    "following": 8
+  },
+  "posts": [
+    {
+      "id": "post1",
+      "time": "2025-10-13 16:25",
+      "content": "季K，这么安排还满意么？",
+      "likes": 586,
+      "comments": 364,
+      "is_pinned": false
+    },
+    {
+      "id": "post2",
+      "time": "昨天 15:18",
+      "content": "回复@翻几倍呢: 单日收益历史？远远达不到//@翻几倍呢:回复@罗洄头:今天应该创造历史了吧\n@罗洄头 :兴致大起 吟诗一首\n《稳健大法666》\n古法选股感觉好\n追高垃圾当个宝\n说话做事不过脑\n曲线引得人人笑",
+      "likes": 110,
+      "comments": 26,
+      "is_pinned": false
+    },
+    {
+      "id": "post3",
+      "time": "昨天 14:47",
+      "content": "兴致大起 吟诗一首\n《稳健大法666》\n古法选股感觉好\n追高垃圾当个宝\n说话做事不过脑\n曲线引得人人笑",
+      "likes": 311,
+      "comments": 114,
+      "is_pinned": false
+    },
+    {
+      "id": "post4",
+      "time": "昨天 14:11",
+      "content": "$稳健(ZH3603602)$\n目测组合持有人年龄超过50",
+      "likes": 133,
+      "comments": 62,
+      "is_pinned": false
+    }
+  ]
+}
