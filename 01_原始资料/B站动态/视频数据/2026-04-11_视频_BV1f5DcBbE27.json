@@ -1,0 +1,44 @@
+{
+  "bvid": "BV1f5DcBbE27",
+  "aid": "116358532564028",
+  "title": "【直播回放】随便聊聊 2026年04月06日22点场",
+  "pubdate": "2026-04-06 23:56:31",
+  "duration_sec": 4281,
+  "desc": "",
+  "owner": {
+    "mid": 525121722,
+    "name": "莫大韭菜"
+  },
+  "stat": {
+    "view": 10642,
+    "like": 196,
+    "coin": 161,
+    "favorite": 71,
+    "share": 12,
+    "danmaku": 1569,
+    "reply": 79
+  },
+  "is_paid": false,
+  "video_url": "https://www.bilibili.com/video/BV1f5DcBbE27",
+  "fetch_date": "2026-04-11",
+  "fetch_ts": 1775889912,
+  "up_liked_comments": [
+    {
+      "rpid": 298012378144,
+      "uname": "stella白羊",
+      "mid": "513140403",
+      "time": "2026-04-07 00:13",
+      "content": "仅供参考",
+      "like": 110
+    },
+    {
+      "rpid": 295500170657,
+      "uname": "不是年轻人不讲武德",
+      "mid": "525336788",
+      "time": "2026-04-07 22:42",
+      "content": "多好看的K线啊！",
+      "like": 2
+    }
+  ],
+  "total_comments": 20
+}
