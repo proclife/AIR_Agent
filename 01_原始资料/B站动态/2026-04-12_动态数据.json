@@ -1,0 +1,416 @@
+{
+  "fetch_date": "2026-04-12",
+  "total_dynamics": 6,
+  "total_up_comments": 14,
+  "total_up_liked": 14,
+  "dynamics": [
+    {
+      "dyn_id": "1156203160283381769",
+      "pub_time": "2026-01-10 17:38",
+      "pub_ts": 1768037926,
+      "is_pinned": true,
+      "is_charge": true,
+      "content": "在不更新视频的时候，我会在这里记录心路历程或投资心得。\n\n打造五间超级按摩房，供大家消息分享、基本面跟踪、理性讨论、相互打气共度难关。怕有人乱带节奏，按摩房设置门槛。置顶动态门槛放开，用于日常讨论大盘、学习工作、扯淡吹牛。\n\n超级按摩房只在最困难时祭出，暂不启用！\n\n注意：大盘股畅所欲言，小盘股不要集合！据我观察，频繁出现在评论区的小盘股，走得都不好。总之都是成年人，买卖自由，盈亏自负。",
+      "comment_count": 51916,
+      "up_comments": [
+        {
+          "rpid": 292378807008,
+          "dyn_id": "1156203160283381769",
+          "rid_str": "380950413",
+          "uid": "525121722",
+          "uname": "莫大韭菜",
+          "post_time": "2026-02-17 00:01",
+          "post_ts": 1771257673,
+          "content": "新年快乐！",
+          "is_up_comment": true,
+          "is_up_liked": false
+        },
+        {
+          "rpid": 288961828800,
+          "dyn_id": "1156203160283381769",
+          "rid_str": "380950413",
+          "uid": "525121722",
+          "uname": "莫大韭菜",
+          "post_time": "2026-01-19 00:26",
+          "post_ts": 1768753585,
+          "content": "平台最低要求就是坐到让老粉说话，让新粉多学习，团体共同进步繁荣，别让我感觉带队那么累。更高要求当然是，新时代的新社交工具。如果没这层愿景，做的动力也是不足的。",
+          "is_up_comment": true,
+          "is_up_liked": false
+        },
+        {
+          "rpid": 288467651392,
+          "dyn_id": "1156203160283381769",
+          "rid_str": "380950413",
+          "uid": "525121722",
+          "uname": "莫大韭菜",
+          "post_time": "2026-01-14 11:01",
+          "post_ts": 1768359705,
+          "content": "牛市，根本不用选股，随便躺，切记，雏们",
+          "is_up_comment": true,
+          "is_up_liked": false
+        },
+        {
+          "rpid": 288622881888,
+          "dyn_id": "1156203160283381769",
+          "rid_str": "380950413",
+          "uid": "525121722",
+          "uname": "莫大韭菜",
+          "post_time": "2026-01-15 22:13",
+          "post_ts": 1768486426,
+          "content": "商业航天，似乎要高强度发一整年的火箭。因为要抢占轨道。当然，短期受点苦，也是必要的",
+          "is_up_comment": true,
+          "is_up_liked": false
+        },
+        {
+          "rpid": 288306928160,
+          "dyn_id": "1156203160283381769",
+          "rid_str": "380950413",
+          "uid": "525121722",
+          "uname": "莫大韭菜",
+          "post_time": "2026-01-12 17:12",
+          "post_ts": 1768209170,
+          "content": "听说有人在跑了？这么心急吗",
+          "is_up_comment": true,
+          "is_up_liked": false
+        },
+        {
+          "rpid": 288623268048,
+          "dyn_id": "1156203160283381769",
+          "rid_str": "380950413",
+          "uid": "525121722",
+          "uname": "莫大韭菜",
+          "post_time": "2026-01-15 22:19",
+          "post_ts": 1768486761,
+          "content": "你们给我充电的钱，本来想捐一些给贫困大学生，从北大那个开始，但后面也没联系我，我也不能上赶着送。这钱放着也是放着，不然就真弄个app算了，搞着玩呗。",
+          "is_up_comment": true,
+          "is_up_liked": false
+        },
+        {
+          "rpid": 288238392608,
+          "dyn_id": "1156203160283381769",
+          "rid_str": "380950413",
+          "uid": "525121722",
+          "uname": "莫大韭菜",
+          "post_time": "2026-01-11 21:38",
+          "post_ts": 1768138716,
+          "content": "明天能涨不，股神们",
+          "is_up_comment": true,
+          "is_up_liked": false
+        },
+        {
+          "rpid": 288693443968,
+          "dyn_id": "1156203160283381769",
+          "rid_str": "380950413",
+          "uid": "525121722",
+          "uname": "莫大韭菜",
+          "post_time": "2026-01-16 17:34",
+          "post_ts": 1768556073,
+          "content": "还是周日播，要有定力！我要趁着热乎劲把app推到不可退回的地步",
+          "is_up_comment": true,
+          "is_up_liked": false
+        },
+        {
+          "rpid": 289095809568,
+          "dyn_id": "1156203160283381769",
+          "rid_str": "380950413",
+          "uid": "525121722",
+          "uname": "莫大韭菜",
+          "post_time": "2026-01-20 12:22",
+          "post_ts": 1768882975,
+          "content": "奇怪，删帖意思是？",
+          "is_up_comment": true,
+          "is_up_liked": false
+        },
+        {
+          "rpid": 289581967280,
+          "dyn_id": "1156203160283381769",
+          "rid_str": "380950413",
+          "uid": "525121722",
+          "uname": "莫大韭菜",
+          "post_time": "2026-01-25 00:54",
+          "post_ts": 1769273696,
+          "content": "还好后面没入戏看，伤害不深，睡觉",
+          "is_up_comment": true,
+          "is_up_liked": false
+        },
+        {
+          "rpid": 289572911008,
+          "dyn_id": "1156203160283381769",
+          "rid_str": "380950413",
+          "uid": "525121722",
+          "uname": "莫大韭菜",
+          "post_time": "2026-01-24 23:20",
+          "post_ts": 1769268021,
+          "content": "不是，差距还是这么大？",
+          "is_up_comment": true,
+          "is_up_liked": false
+        },
+        {
+          "rpid": 289568322912,
+          "dyn_id": "1156203160283381769",
+          "rid_str": "380950413",
+          "uid": "525121722",
+          "uname": "莫大韭菜",
+          "post_time": "2026-01-24 22:38",
+          "post_ts": 1769265535,
+          "content": "看吗？",
+          "is_up_comment": true,
+          "is_up_liked": false
+        },
+        {
+          "rpid": 289572174736,
+          "dyn_id": "1156203160283381769",
+          "rid_str": "380950413",
+          "uid": "525121722",
+          "uname": "莫大韭菜",
+          "post_time": "2026-01-24 23:13",
+          "post_ts": 1769267586,
+          "content": "又是熟悉的配方熟悉的味道！",
+          "is_up_comment": true,
+          "is_up_liked": false
+        },
+        {
+          "rpid": 288467723856,
+          "dyn_id": "1156203160283381769",
+          "rid_str": "380950413",
+          "uid": "525121722",
+          "uname": "莫大韭菜",
+          "post_time": "2026-01-14 11:00",
+          "post_ts": 1768359644,
+          "content": "听说这里也有些常年负能量的人，看来我巡视的太少",
+          "is_up_comment": true,
+          "is_up_liked": false
+        }
+      ],
+      "up_liked_comments": [
+        {
+          "rpid": 292706651681,
+          "dyn_id": "1156203160283381769",
+          "rid_str": "380950413",
+          "uid": "3546618934593594",
+          "uname": "萬華黑哥",
+          "post_time": "2026-03-11 05:08",
+          "post_ts": 1773176934,
+          "content": "凌晨升级当父亲了！感恩拥有的一切。祝大家新的一年收益长红[打call][打call]",
+          "is_up_comment": false,
+          "is_up_liked": true
+        },
+        {
+          "rpid": 293949594705,
+          "dyn_id": "1156203160283381769",
+          "rid_str": "380950413",
+          "uid": "16020750",
+          "uname": "夏日樱时",
+          "post_time": "2026-03-23 20:17",
+          "post_ts": 1774268259,
+          "content": "过生日请大家吃蛋糕，老婆手作",
+          "is_up_comment": false,
+          "is_up_liked": true
+        },
+        {
+          "rpid": 297285638848,
+          "dyn_id": "1156203160283381769",
+          "rid_str": "380950413",
+          "uid": "33080936",
+          "uname": "究极可乐狂魔",
+          "post_time": "2026-03-31 18:34",
+          "post_ts": 1774953274,
+          "content": "期货支援股票！[奋斗]",
+          "is_up_comment": false,
+          "is_up_liked": true
+        },
+        {
+          "rpid": 287094812657,
+          "dyn_id": "1156203160283381769",
+          "rid_str": "380950413",
+          "uid": "1995266",
+          "uname": "李嘉图图图啊",
+          "post_time": "2026-01-21 15:58",
+          "post_ts": 1768982326,
+          "content": "各位B友昨天出门被车撞了，躺在手术台上无数遍的回想我的崽崽老婆家人，各位千万注意安全，赚多赚少都无所谓的，生命才是第一位。[脸红]",
+          "is_up_comment": false,
+          "is_up_liked": true
+        }
+      ]
+    },
+    {
+      "dyn_id": "1186990748616097811",
+      "pub_time": "2026-04-03 16:50",
+      "pub_ts": 1775206220,
+      "is_pinned": false,
+      "is_charge": true,
+      "content": "都别慌！让我先慌两天\n周一晚上播\n留下问题",
+      "comment_count": 417,
+      "up_comments": [],
+      "up_liked_comments": []
+    },
+    {
+      "dyn_id": "1181774729877389317",
+      "pub_time": "2026-03-20 15:29",
+      "pub_ts": 1773991771,
+      "is_pinned": false,
+      "is_charge": true,
+      "content": "虽然跌得很多\n但还是周日播吧\n一方面看看周末的中东局势\n一方面该放松去放松\n咱们是经过大风大浪的\nbtw\n社区的网站已经注册了\n商标已经申请了\nV1版本开发还有2-3周\n留下问题",
+      "comment_count": 446,
+      "up_comments": [],
+      "up_liked_comments": [
+        {
+          "rpid": 296084593648,
+          "dyn_id": "1181774729877389317",
+          "rid_str": "388570044",
+          "uid": "393783517",
+          "uname": "凌波丽等待晚安",
+          "post_time": "2026-03-20 17:04",
+          "post_ts": 1773997467,
+          "content": "走势良好，很多的都做的很漂亮，很美。我甚是开心和舒适[大笑][大笑]。拿着非常踏实[大笑]",
+          "is_up_comment": false,
+          "is_up_liked": true
+        },
+        {
+          "rpid": 297458605360,
+          "dyn_id": "1181774729877389317",
+          "rid_str": "388570044",
+          "uid": "251663920",
+          "uname": "神奇魔法饼干蛋",
+          "post_time": "2026-04-02 10:30",
+          "post_ts": 1775097013,
+          "content": "漫长的投资",
+          "is_up_comment": false,
+          "is_up_liked": true
+        },
+        {
+          "rpid": 293606658193,
+          "dyn_id": "1181774729877389317",
+          "rid_str": "388570044",
+          "uid": "39262292",
+          "uname": "赢麦___",
+          "post_time": "2026-03-20 15:43",
+          "post_ts": 1773992613,
+          "content": "会不会复刻23年，又要苦一苦散户，然后收带血筹码",
+          "is_up_comment": false,
+          "is_up_liked": true
+        }
+      ]
+    },
+    {
+      "dyn_id": "1177267191765008384",
+      "pub_time": "2026-03-08 11:57",
+      "pub_ts": 1772942278,
+      "is_pinned": false,
+      "is_charge": true,
+      "content": "今晚直播吧？好久没聊了！收集下话题。",
+      "comment_count": 438,
+      "up_comments": [],
+      "up_liked_comments": [
+        {
+          "rpid": 292462688529,
+          "dyn_id": "1177267191765008384",
+          "rid_str": "387335880",
+          "uid": "38187874",
+          "uname": "oi叽叽嘎嘎",
+          "post_time": "2026-03-08 14:44",
+          "post_ts": 1772952260,
+          "content": "爆！就是想知道东方龙有没有参活",
+          "is_up_comment": false,
+          "is_up_liked": true
+        }
+      ]
+    },
+    {
+      "dyn_id": "1175868995239149586",
+      "pub_time": "2026-03-04 17:32",
+      "pub_ts": 1772616735,
+      "is_pinned": false,
+      "is_charge": true,
+      "content": "好久起来b站了，实在太忙\n今天有必要出来给大家稳定下军心\n这个暴跌我认为是非常大的机会\n因为全球资本放眼望去\n只有中国你可以确保安全\n这种情况跌正常吗？\n很正常\n不把软骨头洗掉一批\n怎么继续向上\n除非家家户户都在家烧钱\n否则钱必定会有一个出口\n这个出口就是我们这\n我们卡位很好\n不要轻易让出位置",
+      "comment_count": 478,
+      "up_comments": [],
+      "up_liked_comments": [
+        {
+          "rpid": 294425337696,
+          "dyn_id": "1175868995239149586",
+          "rid_str": "386923565",
+          "uid": "279956456",
+          "uname": "潇洒妄想家",
+          "post_time": "2026-03-04 19:26",
+          "post_ts": 1772623560,
+          "content": "莫大说的对！",
+          "is_up_comment": false,
+          "is_up_liked": true
+        },
+        {
+          "rpid": 292073616561,
+          "dyn_id": "1175868995239149586",
+          "rid_str": "386923565",
+          "uid": "2786589",
+          "uname": "吉祥村話事人",
+          "post_time": "2026-03-04 18:35",
+          "post_ts": 1772620517,
+          "content": "豆包说的对[doge]",
+          "is_up_comment": false,
+          "is_up_liked": true
+        },
+        {
+          "rpid": 292069031873,
+          "dyn_id": "1175868995239149586",
+          "rid_str": "386923565",
+          "uid": "361267291",
+          "uname": "犹钰就会败北",
+          "post_time": "2026-03-04 17:48",
+          "post_ts": 1772617739,
+          "content": "终于等到你[喜欢]",
+          "is_up_comment": false,
+          "is_up_liked": true
+        },
+        {
+          "rpid": 292091800961,
+          "dyn_id": "1175868995239149586",
+          "rid_str": "386923565",
+          "uid": "415159483",
+          "uname": "人间共鸣深深的共情",
+          "post_time": "2026-03-04 21:39",
+          "post_ts": 1772631595,
+          "content": "有bu去参观过吗？",
+          "is_up_comment": false,
+          "is_up_liked": true
+        }
+      ]
+    },
+    {
+      "dyn_id": "1171803903154454547",
+      "pub_time": "2026-02-21 18:37",
+      "pub_ts": 1771670257,
+      "is_pinned": false,
+      "is_charge": false,
+      "content": "",
+      "comment_count": 1196,
+      "up_comments": [],
+      "up_liked_comments": [
+        {
+          "rpid": 292992231920,
+          "dyn_id": "1171803903154454547",
+          "rid_str": "116108166172614",
+          "uid": "3252937",
+          "uname": "Lukas&Nick",
+          "post_time": "2026-02-21 19:19",
+          "post_ts": 1771672773,
+          "content": "恭祝各位莫家军，26年依然收获满满，持仓翻翻[大笑]",
+          "is_up_comment": false,
+          "is_up_liked": true
+        },
+        {
+          "rpid": 292988738544,
+          "dyn_id": "1171803903154454547",
+          "rid_str": "116108166172614",
+          "uid": "386517543",
+          "uname": "攻略背包",
+          "post_time": "2026-02-21 18:53",
+          "post_ts": 1771671220,
+          "content": "画图小天才初五送大家一张开心的图[微笑]",
+          "is_up_comment": false,
+          "is_up_liked": true
+        }
+      ]
+    }
+  ]
+}
