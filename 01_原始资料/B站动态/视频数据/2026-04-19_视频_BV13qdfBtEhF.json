@@ -1,0 +1,28 @@
+{
+  "bvid": "BV13qdfBtEhF",
+  "aid": 116432167765163,
+  "title": "【直播回放】随便聊聊 2026年04月19日22点场",
+  "pubdate": "2026-04-19 23:58:35",
+  "duration_sec": 4725,
+  "duration_hms": "01:18:45",
+  "owner": {
+    "mid": 525121722,
+    "name": "莫大韭菜"
+  },
+  "stat": {
+    "view": 14480,
+    "danmaku": 3879,
+    "reply": 131,
+    "favorite": 94,
+    "coin": 204,
+    "share": 38,
+    "like": 250
+  },
+  "stat_fetched_at": "2026-04-24 18:38:06",
+  "rights": {
+    "is_upower_exclusive": true,
+    "is_chargeable": false
+  },
+  "video_url": "https://www.bilibili.com/video/BV13qdfBtEhF",
+  "pic": "http://i0.hdslb.com/bfs/archive/1ef1adcad51ed1d627ea00d6d85f4511aad08937.jpg"
+}
